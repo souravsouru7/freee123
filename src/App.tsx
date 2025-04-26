@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.scss';
 import ProductSection from './components/ProductSection';
 import Header from './components/Header/Header'
