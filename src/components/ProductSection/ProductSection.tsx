@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 import img2 from '../../assets/images/—Pngtree—black tire with rim isolated_16660568.png';
