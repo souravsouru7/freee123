@@ -4,34 +4,34 @@ import wheelImage from '../../assets/images/pngwing.com.png';
 
 const timeline = [
   {
-    year: '1985',
+    year: '1',
     icon: '🏁',
-    title: 'The First Lap',
-    description: 'Our journey began with a single vision: to redefine speed and safety on the track.'
+    title: 'Born to Race',
+    description: 'From the first day, our passion was speed, precision, and the thrill of the track.'
   },
   {
-    year: '1992',
+    year: '2',
     icon: '🔬',
-    title: 'The Breakthrough',
-    description: "Developed the world's first adaptive racing tyre, setting new records."
+    title: 'Innovation Unleashed',
+    description: 'We shattered conventions, introducing smart compounds and AI-driven tread designs.'
   },
   {
-    year: '2001',
+    year: '3',
     icon: '🏆',
-    title: 'Racing Legends',
-    description: 'Our tyres powered championship-winning teams across Europe.'
+    title: "Champions' Choice",
+    description: 'Our tyres became the secret weapon for world-class teams and legendary drivers.'
   },
   {
-    year: '2015',
+    year: '4',
     icon: '🌱',
-    title: 'Green Revolution',
-    description: 'Introduced eco-friendly compounds, blending performance with sustainability.'
+    title: 'Racing Green',
+    description: 'We pioneered eco-performance, blending sustainability with unyielding grip.'
   },
   {
-    year: '2024',
+    year: '5',
     icon: '🤖',
-    title: 'Beyond the Horizon',
-    description: 'Launching AI-optimized tyres for the next generation of motorsport.'
+    title: 'The Future Rolls In',
+    description: 'Today, our AI-optimized GT-R series leads the next era of motorsport.'
   }
 ];
 
@@ -107,77 +107,110 @@ const AboutUs = () => {
       </div>
 
       {/* Timeline Section */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 py-8">
-        {/* Premium Vertical Timeline (Desktop) */}
-        <div className="hidden md:flex flex-col items-center relative mb-20">
-          {/* Vertical line */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-10 bottom-10 w-1 bg-gradient-to-b from-[#dc2626] via-[#fff2] to-[#dc2626] opacity-70 z-0" />
-          {timeline.map((item, idx) => (
-            <div key={item.year} className="relative w-full flex items-center mb-16 last:mb-0 min-h-[120px]">
-              {/* Dot */}
-              <div className="absolute left-1/2 -translate-x-1/2 z-10">
-                <motion.div
-                  initial={{ boxShadow: '0 0 0px #dc2626' }}
-                  animate={{ boxShadow: ['0 0 0px #dc2626', '0 0 32px 12px #dc2626cc', '0 0 0px #dc2626'] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatType: 'loop' }}
-                  className="w-12 h-12 rounded-full bg-gradient-to-br from-[#DC2626] to-[#ef4444] border-4 border-white/40 flex items-center justify-center text-white text-2xl font-bold shadow-lg"
-                >
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16">
+        {/* Horizontal Stepper Timeline (Desktop) */}
+        <div className="hidden md:flex flex-col items-center w-full">
+          <div className="relative w-full flex items-center justify-between">
+            {/* Connecting line */}
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-[#dc2626] via-[#fff2] to-[#dc2626] opacity-70 z-0 rounded-full" style={{ transform: 'translateY(-50%)' }} />
+            {timeline.map((item, idx) => (
+              <motion.div
+                key={item.year}
+                className="relative flex flex-col items-center group w-1/5"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: idx * 0.15 }}
+                viewport={{ once: true }}
+              >
+                {/* Icon in circle */}
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#DC2626] to-[#ef4444] flex items-center justify-center text-white text-3xl font-bold shadow-lg border-4 border-[#fff2] z-10 group-hover:scale-110 transition-transform duration-300 cursor-pointer">
                   {item.icon}
-                </motion.div>
-              </div>
-              {/* Card with pointer triangle */}
-              <div className={`flex-1 flex ${idx % 2 === 0 ? 'justify-end pr-16' : 'justify-start pl-16'}`}> 
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: idx * 0.15 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.04, boxShadow: '0 8px 40px 0 #dc2626cc, 0 1.5px 16px 0 #fff3' }}
-                  className="relative bg-gradient-to-br from-[#18181b]/80 via-[#222]/80 to-[#2a0909]/80 border border-[#dc2626]/40 shadow-2xl p-7 rounded-2xl max-w-md w-full backdrop-blur-xl transition-all duration-300 hover:bg-[#18181b]/90 hover:border-[#ef4444]"
-                >
-                  {/* Triangle pointer */}
-                  <div className={`absolute top-6 ${idx % 2 === 0 ? '-right-4' : '-left-4'} w-0 h-0 border-y-8 border-y-transparent ${idx % 2 === 0 ? 'border-l-8 border-l-[#18181b]/80' : 'border-r-8 border-r-[#18181b]/80'}`}></div>
-                  <div className="text-xl font-semibold text-white mb-1 flex items-center gap-2">
-                    <span className="inline-block w-2 h-2 rounded-full bg-[#dc2626] animate-pulse" />
-                    {item.title}
-                  </div>
-                  <div className="text-gray-300 text-base">{item.description}</div>
-                </motion.div>
-              </div>
-              <div className="flex-1" />
-            </div>
-          ))}
-        </div>
-        {/* Mobile Timeline (vertical) */}
-        <div className="md:hidden flex flex-col gap-10 mb-20">
-          {timeline.map((item, idx) => (
-            <ParallaxCard key={item.year}>
-              <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: idx * 0.15 }} viewport={{ once: true }} className="flex items-center gap-4 bg-black/60 rounded-2xl border border-[#dc2626]/30 shadow-2xl p-4 backdrop-blur-xl hover:shadow-[0_8px_40px_0_#dc2626cc] transition-all duration-300">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#DC2626] to-[#ef4444] flex items-center justify-center text-3xl font-bold shadow-lg border-4 border-[#fff2]">{item.icon}</div>
-                <div className="flex-1">
-                  <div className="text-lg font-semibold text-white mb-1">{item.title}</div>
-                  <div className="text-gray-300 text-sm">{item.description}</div>
                 </div>
+                {/* Card popup on hover */}
+                <motion.div
+                  className="absolute left-1/2 -translate-x-1/2 top-20 w-64 bg-white/10 backdrop-blur-2xl border border-[#dc2626]/30 rounded-2xl shadow-2xl p-5 text-center pointer-events-none opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 group-hover:-translate-y-4 transition-all duration-300 z-20"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileHover={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="text-lg font-bold text-white mb-1">{item.title}</div>
+                  <div className="text-gray-200 text-sm">{item.description}</div>
+                </motion.div>
+                {/* Year below icon */}
+                <div className="mt-4 text-[#dc2626] font-bold text-base drop-shadow">{item.year}</div>
               </motion.div>
-            </ParallaxCard>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Values Section */}
-      <div className="max-w-5xl mx-auto px-4 pb-24">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-white mb-10 tracking-wide">Our Values</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-center text-white mb-16"
+        >
+          Our Core Values
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {values.map((value, idx) => (
-            <ParallaxCard key={value.title}>
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: idx * 0.15 }} viewport={{ once: true }} className="bg-gradient-to-br from-[#18181b] via-[#222] to-[#2a0909] border border-[#dc2626]/30 shadow-[0_4px_40px_0_#dc2626cc,0_1.5px_8px_0_#fff2] backdrop-blur-xl p-10 rounded-2xl flex flex-col items-center text-center hover:scale-105 hover:shadow-[0_8px_40px_0_#dc2626cc,0_1.5px_16px_0_#fff3] transition-all duration-300">
-                <div className="text-5xl mb-4 drop-shadow-[0_2px_12px_#dc2626a0]">{value.icon}</div>
-                <div className="text-xl font-bold text-white mb-2 tracking-wide">{value.title}</div>
-                <div className="text-gray-300 text-base font-medium">{value.description}</div>
-              </motion.div>
-            </ParallaxCard>
+            <motion.div
+              key={value.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: idx * 0.2 }}
+              viewport={{ once: true }}
+            >
+              <ParallaxCard>
+                <div className="bg-gradient-to-br from-[#18181b] to-[#0a0a0a] p-8 rounded-2xl border border-[#dc2626]/30 backdrop-blur-xl">
+                  <div className="text-4xl mb-4">{value.icon}</div>
+                  <h3 className="text-2xl font-bold text-white mb-3">{value.title}</h3>
+                  <p className="text-gray-300">{value.description}</p>
+                </div>
+              </ParallaxCard>
+            </motion.div>
           ))}
         </div>
+      </div>
+
+      {/* Technology Showcase */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-br from-[#18181b] to-[#0a0a0a] p-8 rounded-2xl border border-[#dc2626]/30 backdrop-blur-xl"
+        >
+          <h2 className="text-3xl font-bold text-white mb-6">Cutting-Edge Technology</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-[#dc2626] mb-4">AI-Optimized Tread Patterns</h3>
+              <p className="text-gray-300">
+                Our proprietary AI algorithms analyze millions of data points to create tread patterns that maximize grip and performance in any condition.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-[#dc2626] mb-4">Sustainable Materials</h3>
+              <p className="text-gray-300">
+                We're pioneering the use of eco-friendly compounds that maintain performance while reducing environmental impact.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
