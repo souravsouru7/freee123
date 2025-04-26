@@ -5,23 +5,33 @@ import wheelImage from '../../assets/images/pngwing.com.png';
 const timeline = [
   {
     year: '1985',
-    title: 'Founded',
-    description: 'Born in Stuttgart, we set out to redefine tyre performance.'
+    icon: '🏁',
+    title: 'The First Lap',
+    description: 'Our journey began with a single vision: to redefine speed and safety on the track.'
   },
   {
-    year: '1995',
-    title: 'Innovation Hub',
-    description: 'Opened our R&D center, pioneering new compounds and tread designs.'
+    year: '1992',
+    icon: '🔬',
+    title: 'The Breakthrough',
+    description: "Developed the world's first adaptive racing tyre, setting new records."
   },
   {
-    year: '2010',
-    title: 'Global Expansion',
-    description: 'Trusted by racing teams and drivers worldwide.'
+    year: '2001',
+    icon: '🏆',
+    title: 'Racing Legends',
+    description: 'Our tyres powered championship-winning teams across Europe.'
+  },
+  {
+    year: '2015',
+    icon: '🌱',
+    title: 'Green Revolution',
+    description: 'Introduced eco-friendly compounds, blending performance with sustainability.'
   },
   {
     year: '2024',
-    title: 'Next Gen',
-    description: 'Launched the GT-R series, the future of racing tyres.'
+    icon: '🤖',
+    title: 'Beyond the Horizon',
+    description: 'Launching AI-optimized tyres for the next generation of motorsport.'
   }
 ];
 
@@ -98,33 +108,35 @@ const AboutUs = () => {
 
       {/* Timeline Section */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 py-8">
-        {/* Unique Vertical Timeline (Desktop) */}
+        {/* Premium Vertical Timeline (Desktop) */}
         <div className="hidden md:flex flex-col items-center relative mb-20">
           {/* Vertical line */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-7 bottom-7 w-1 bg-gradient-to-b from-[#dc2626] via-[#fff2] to-[#dc2626] opacity-60 z-0" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-10 bottom-10 w-1 bg-gradient-to-b from-[#dc2626] via-[#fff2] to-[#dc2626] opacity-70 z-0" />
           {timeline.map((item, idx) => (
-            <div key={item.year} className="relative w-full flex items-center mb-12 last:mb-0">
+            <div key={item.year} className="relative w-full flex items-center mb-16 last:mb-0 min-h-[120px]">
               {/* Dot */}
               <div className="absolute left-1/2 -translate-x-1/2 z-10">
                 <motion.div
                   initial={{ boxShadow: '0 0 0px #dc2626' }}
-                  animate={{ boxShadow: ['0 0 0px #dc2626', '0 0 24px 8px #dc2626cc', '0 0 0px #dc2626'] }}
+                  animate={{ boxShadow: ['0 0 0px #dc2626', '0 0 32px 12px #dc2626cc', '0 0 0px #dc2626'] }}
                   transition={{ duration: 2, repeat: Infinity, repeatType: 'loop' }}
-                  className="w-10 h-10 rounded-full bg-gradient-to-br from-[#DC2626] to-[#ef4444] border-4 border-white/30 flex items-center justify-center text-white text-lg font-bold shadow-lg"
+                  className="w-12 h-12 rounded-full bg-gradient-to-br from-[#DC2626] to-[#ef4444] border-4 border-white/40 flex items-center justify-center text-white text-2xl font-bold shadow-lg"
                 >
-                  {item.year}
+                  {item.icon}
                 </motion.div>
               </div>
-              {/* Card */}
-              <div className={`flex-1 ${idx % 2 === 0 ? 'pr-16 justify-end' : 'pl-16 justify-start'} flex`}> 
+              {/* Card with pointer triangle */}
+              <div className={`flex-1 flex ${idx % 2 === 0 ? 'justify-end pr-16' : 'justify-start pl-16'}`}> 
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: idx * 0.15 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.06, boxShadow: '0 8px 40px 0 #dc2626cc, 0 1.5px 16px 0 #fff3' }}
-                  className="relative bg-black/70 border border-[#dc2626]/40 shadow-2xl p-6 rounded-2xl max-w-md w-full backdrop-blur-xl transition-all duration-300 hover:bg-[#18181b]/90 hover:border-[#ef4444]"
+                  whileHover={{ scale: 1.04, boxShadow: '0 8px 40px 0 #dc2626cc, 0 1.5px 16px 0 #fff3' }}
+                  className="relative bg-gradient-to-br from-[#18181b]/80 via-[#222]/80 to-[#2a0909]/80 border border-[#dc2626]/40 shadow-2xl p-7 rounded-2xl max-w-md w-full backdrop-blur-xl transition-all duration-300 hover:bg-[#18181b]/90 hover:border-[#ef4444]"
                 >
+                  {/* Triangle pointer */}
+                  <div className={`absolute top-6 ${idx % 2 === 0 ? '-right-4' : '-left-4'} w-0 h-0 border-y-8 border-y-transparent ${idx % 2 === 0 ? 'border-l-8 border-l-[#18181b]/80' : 'border-r-8 border-r-[#18181b]/80'}`}></div>
                   <div className="text-xl font-semibold text-white mb-1 flex items-center gap-2">
                     <span className="inline-block w-2 h-2 rounded-full bg-[#dc2626] animate-pulse" />
                     {item.title}
@@ -141,7 +153,7 @@ const AboutUs = () => {
           {timeline.map((item, idx) => (
             <ParallaxCard key={item.year}>
               <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: idx * 0.15 }} viewport={{ once: true }} className="flex items-center gap-4 bg-black/60 rounded-2xl border border-[#dc2626]/30 shadow-2xl p-4 backdrop-blur-xl hover:shadow-[0_8px_40px_0_#dc2626cc] transition-all duration-300">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#DC2626] to-[#ef4444] flex items-center justify-center text-white text-2xl font-bold shadow-lg border-4 border-[#fff2]">{item.year}</div>
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#DC2626] to-[#ef4444] flex items-center justify-center text-3xl font-bold shadow-lg border-4 border-[#fff2]">{item.icon}</div>
                 <div className="flex-1">
                   <div className="text-lg font-semibold text-white mb-1">{item.title}</div>
                   <div className="text-gray-300 text-sm">{item.description}</div>
