@@ -1,6 +1,6 @@
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import React, { useRef, useEffect } from 'react';
-import wheelImage from '../../assets/images/pngwing.com.png';
+import wheelImage from '../../assets/images/—Pngtree—black tire with rim isolated_16660568.png';
 
 const splitText = (text: string) => text.split('').map((char, i) => (
   <motion.span
@@ -25,8 +25,12 @@ const Hero = () => {
     offset: ["start start", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const tyreScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.7]);
+  const tyreOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const tyreY = useTransform(scrollYProgress, [0, 0.5], [0, -120]);
+
+  const headlineY = useTransform(scrollYProgress, [0, 0.4], [0, -80]);
+  const headlineOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
 
   useEffect(() => {
     controls.start({
@@ -64,7 +68,6 @@ const Hero = () => {
   return (
     <motion.section 
       ref={containerRef}
-      style={{ y, opacity }}
       className="min-h-screen w-screen relative overflow-hidden flex items-center justify-center bg-transparent"
     >
       {/* 3D Background Shapes */}
@@ -185,45 +188,57 @@ const Hero = () => {
         <div className="flex items-center justify-end flex-1 min-w-[340px]">
           <motion.div
             ref={wheelRef}
-            className="relative w-[440px] h-[440px] flex items-center justify-center filter drop-shadow-[0_0_80px_#dc2626cc] transition-all duration-400 bg-[radial-gradient(circle_at_60%_60%,#dc2626_0%,transparent_80%)] rounded-full shadow-[0_0_100px_0_#dc2626a0,inset_0_0_60px_0_#dc262680] overflow-visible hover:drop-shadow-[0_0_100px_#dc2626ee] hover:scale-105"
+            className="relative w-[440px] h-[440px] flex items-center justify-center filter drop-shadow-[0_0_60px_#dc2626cc] transition-all duration-400 bg-[radial-gradient(circle_at_60%_60%,#dc2626_0%,transparent_80%)] rounded-full shadow-[0_0_100px_0_#dc2626a0,inset_0_0_60px_0_#dc262680] overflow-visible hover:drop-shadow-[0_0_100px_#dc2626ee] hover:scale-105"
             animate={{ rotate: [0, 360] }}
             transition={{ repeat: Infinity, duration: 16, ease: 'linear' }}
+            style={{ scale: tyreScale, opacity: tyreOpacity, y: tyreY }}
           >
+            {/* Animated Tyre Image */}
             <motion.img
               src={wheelImage}
               alt="Premium Performance Tyres"
-              className="w-full h-full object-contain z-10 filter drop-shadow-[0_0_40px_#fff3] transition-transform duration-400 hover:scale-110"
-              animate={controls}
+              className="w-full h-full object-contain z-10 filter drop-shadow-[0_0_60px_#dc2626cc] transition-transform duration-400 rounded-full"
+              animate={{
+                rotateZ: [0, 360],
+                rotateX: [0, 15, 0, -15, 0],
+                y: [0, -30, 0, 30, 0],
+                scale: [1, 1.08, 1]
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 12,
+                ease: 'easeInOut',
+                repeatType: 'loop'
+              }}
+              whileHover={{
+                scale: 1.13,
+                filter: 'drop-shadow(0 0 80px #dc2626cc) drop-shadow(0 0 40px #fff8)'
+              }}
             />
-            <motion.div 
-              className="absolute top-6 left-6 bg-gradient-to-r from-[#DC2626] to-[#ef4444] text-white text-lg font-bold px-6 py-2.5 rounded-full shadow-[0_4px_20px_0_#dc2626cc,inset_0_2px_4px_0_#fff3] tracking-wider z-20 animate-[badgePop_1.2s_cubic-bezier(.68,-0.55,.27,1.55)] origin-center transition-all duration-300 hover:scale-110 hover:rotate-[-5deg] hover:shadow-[0_8px_30px_0_#dc2626cc,inset_0_2px_6px_0_#fff4]"
-              whileHover={{ scale: 1.1, rotate: -5 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              NEW 2024
-            </motion.div>
           </motion.div>
         </div>
 
         <div className="flex flex-col justify-center flex-1 min-w-[340px]">
           <div className="w-full max-w-none mx-auto mb-8">
-            <motion.h1 
-              className="text-[4.2rem] font-black tracking-[-2px] text-white mb-2 leading-[1.1] [text-shadow:0_2px_20px_#dc262680]"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {splitText('ULTIMATE')}
-              <br />
-              <motion.span 
-                className="block text-[3.2rem] text-[#DC2626] font-black tracking-[-1px] mt-0.5 bg-gradient-to-r from-[#DC2626] to-[#ef4444] bg-clip-text text-transparent filter drop-shadow-[0_2px_8px_#dc262680]"
-                initial={{ opacity: 0, y: 30 }}
+            <motion.div style={{ y: headlineY, opacity: headlineOpacity }}>
+              <motion.h1
+                className="text-[4.2rem] font-black tracking-[-2px] text-white mb-2 leading-[1.1] [text-shadow:0_2px_20px_#dc262680]"
+                initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
+                transition={{ duration: 0.8 }}
               >
-                {splitText('PERFORMANCE')}
-              </motion.span>
-            </motion.h1>
+                {splitText('ULTIMATE')}
+                <br />
+                <motion.span 
+                  className="block text-[3.2rem] text-[#DC2626] font-black tracking-[-1px] mt-0.5 bg-gradient-to-r from-[#DC2626] to-[#ef4444] bg-clip-text text-transparent filter drop-shadow-[0_2px_8px_#dc262680]"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                >
+                  {splitText('PERFORMANCE')}
+                </motion.span>
+              </motion.h1>
+            </motion.div>
 
             <motion.div
               className="text-white text-lg font-normal mb-5 tracking-[1.5px] [text-shadow:0_2px_12px_#dc2626a0] bg-gradient-to-r from-white to-[#DC2626] bg-clip-text text-transparent"
