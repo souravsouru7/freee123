@@ -1,6 +1,6 @@
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import React, { useRef, useEffect } from 'react';
-import wheelImage from '../../assets/images/—Pngtree—black tire with rim isolated_16660568.png';
+import wheelImage from '../../assets/pngegg (79).png';
 
 const splitText = (text: string) => text.split('').map((char, i) => (
   <motion.span
@@ -188,7 +188,7 @@ const Hero = () => {
         <div className="flex items-center justify-end flex-1 min-w-[340px]">
           <motion.div
             ref={wheelRef}
-            className="relative w-[440px] h-[440px] flex items-center justify-center filter drop-shadow-[0_0_60px_#dc2626cc] transition-all duration-400 bg-[radial-gradient(circle_at_60%_60%,#dc2626_0%,transparent_80%)] rounded-full shadow-[0_0_100px_0_#dc2626a0,inset_0_0_60px_0_#dc262680] overflow-visible hover:drop-shadow-[0_0_100px_#dc2626ee] hover:scale-105"
+            className="relative w-[440px] h-[440px] flex items-center justify-center transition-all duration-400 bg-[radial-gradient(circle_at_60%_60%,#dc2626_0%,transparent_80%)] rounded-full shadow-[0_0_100px_0_#dc2626a0,inset_0_0_60px_0_#dc262680] overflow-visible hover:scale-105"
             animate={{ rotate: [0, 360] }}
             transition={{ repeat: Infinity, duration: 16, ease: 'linear' }}
             style={{ scale: tyreScale, opacity: tyreOpacity, y: tyreY }}
@@ -197,7 +197,7 @@ const Hero = () => {
             <motion.img
               src={wheelImage}
               alt="Premium Performance Tyres"
-              className="w-full h-full object-contain z-10 filter drop-shadow-[0_0_60px_#dc2626cc] transition-transform duration-400 rounded-full"
+              className="w-full h-full object-contain z-10 transition-transform duration-400 rounded-full"
               animate={{
                 rotateZ: [0, 360],
                 rotateX: [0, 15, 0, -15, 0],
@@ -211,8 +211,7 @@ const Hero = () => {
                 repeatType: 'loop'
               }}
               whileHover={{
-                scale: 1.13,
-                filter: 'drop-shadow(0 0 80px #dc2626cc) drop-shadow(0 0 40px #fff8)'
+                scale: 1.13
               }}
             />
           </motion.div>

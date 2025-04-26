@@ -1,0 +1,189 @@
+.faq-section {
+  position: relative;
+  padding: 5rem 1rem;
+  overflow: hidden;
+
+  .background-elements {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    .gradient-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+    }
+  }
+
+  .faq-container {
+    position: relative;
+    z-index: 10;
+    max-width: 72rem;
+    margin: 0 auto;
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 4rem;
+
+      .faq-badge {
+        display: inline-block;
+        padding: 0.25rem 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #DC2626;
+        background-color: rgba(220, 38, 38, 0.1);
+        border-radius: 9999px;
+      }
+
+      h2 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 1rem;
+
+        @media (min-width: 768px) {
+          font-size: 3rem;
+        }
+      }
+
+      p {
+        color: #9ca3af;
+        font-size: 1.125rem;
+        max-width: 32rem;
+        margin: 0 auto;
+      }
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .faq-item {
+        position: relative;
+        height: 100%;
+
+        .faq-card {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+          border-radius: 1rem;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.02);
+          }
+        }
+
+        .faq-card-hover {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), transparent);
+          border-radius: 1rem;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+
+        .faq-content {
+          position: relative;
+          padding: 1.5rem;
+          height: 100%;
+
+          .faq-button {
+            width: 100%;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .faq-icon {
+              width: 2.5rem;
+              height: 2.5rem;
+              border-radius: 9999px;
+              background-color: rgba(220, 38, 38, 0.2);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: transform 0.2s ease;
+
+              &:hover {
+                transform: scale(1.1);
+              }
+
+              span {
+                color: #DC2626;
+                font-size: 1.25rem;
+              }
+            }
+
+            h3 {
+              font-size: 1.25rem;
+              font-weight: 600;
+              color: white;
+              transition: color 0.3s ease;
+
+              &:hover {
+                color: #DC2626;
+              }
+            }
+          }
+
+          .faq-answer {
+            margin-top: 1rem;
+            padding-left: 3.5rem;
+            color: #d1d5db;
+          }
+        }
+      }
+    }
+
+    .faq-cta {
+      margin-top: 4rem;
+      text-align: center;
+
+      p {
+        color: #9ca3af;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta-button {
+        position: relative;
+        overflow: hidden;
+        padding: 0.75rem 2rem;
+        background-color: #DC2626;
+        color: white;
+        font-weight: 700;
+        border-radius: 9999px;
+        transition: all 0.4s ease;
+
+        &:hover {
+          box-shadow: 0 0 30px #DC2626;
+        }
+
+        .button-gradient {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to right, #DC2626, #ef4444);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+} 
