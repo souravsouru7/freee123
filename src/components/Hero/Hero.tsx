@@ -226,7 +226,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {splitText('ULTIMATE')}
+                {splitText('ALNSR ALDAHABI')}
                 <br />
                 <motion.span 
                   className="block text-[3.2rem] text-[#DC2626] font-black tracking-[-1px] mt-0.5 bg-gradient-to-r from-[#DC2626] to-[#ef4444] bg-clip-text text-transparent filter drop-shadow-[0_2px_8px_#dc262680]"
@@ -234,7 +234,7 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 >
-                  {splitText('PERFORMANCE')}
+                  {splitText('TYRES TRADING')}
                 </motion.span>
               </motion.h1>
             </motion.div>
@@ -245,7 +245,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
             >
-              The next generation of racing tyres
+              Your Trusted Partner in Quality Tires and Vehicle Outfits Since 2006
             </motion.div>
 
             <motion.div
@@ -254,7 +254,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4 }}
             >
-              DURABILITY
+              LOCATION
             </motion.div>
 
             <motion.div
@@ -263,7 +263,7 @@ const Hero = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 1.6, type: 'spring' }}
             >
-              50,000 MILES
+              DUBAI, UAE
             </motion.div>
 
             <motion.div
@@ -272,7 +272,7 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.8 }}
             >
-              Extended Life Span
+              Since 2006
             </motion.div>
 
             <div className="flex gap-6 mt-10">
@@ -300,10 +300,11 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.0 }}
           >
-            Experience the pinnacle of tyre technology with our GT-R series. Engineered for
-            maximum performance, designed for ultimate control, and crafted for the most
-            demanding driving conditions. Whether you're on the track or the street, our tyres
-            deliver unmatched grip and durability.
+            Located in the heart of Dubai, UAE, ALNSR ALDAHABI TYRES TRADING has been a leading name in the tire and
+            outfit trading industry for nearly two decades. We specialize in a wide range of car tires, truck tires, and vehicle
+            outfit products, serving both individual customers and businesses with excellence, reliability, and competitive
+            pricing. Whether you are looking for premium tires for your personal car or durable solutions for your commercial fleet,
+            we are here to keep you moving safely and smoothly.
           </motion.p>
 
           <motion.div
