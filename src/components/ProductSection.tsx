@@ -7,34 +7,38 @@ const ProductSection: React.FC = () => {
     {
       id: 1,
       name: 'Apollo',
-      image: '/src/assets/pngegg (73).png',
+      image: '/assets/pngegg (73).png',
     },
     {
       id: 2,
       name: 'BFGoodrich',
-      image: '/src/assets/pngegg (79).png',
+      image: '/assets/pngegg (79).png',
     },
     {
       id: 3,
       name: 'Michelin',
-      image: '/src/assets/pngegg (83).png',
+      image: '/assets/pngegg (83).png',
     },
     {
       id: 4,
       name: 'Yokohama',
-      image: '/src/assets/pngegg (73).png',
+      image: '/assets/pngegg (73).png',
     },
     {
       id: 5,
       name: 'Bridgestone',
-      image: '/src/assets/pngegg (73).png',
+      image: '/assets/pngegg (73).png',
     },
     {
       id: 6,
       name: 'Continental',
-      image: '/src/assets/pngegg (79).png',
+      image: '/assets/pngegg (79).png',
     },
   ];
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    console.error('Image failed to load:', e.currentTarget.src);
+  };
 
   return (
     <section className="product-section">
@@ -68,6 +72,7 @@ const ProductSection: React.FC = () => {
                   src={product.image}
                   alt={product.name}
                   className="product-section__image"
+                  onError={handleImageError}
                 />
               </div>
               <h3 className="product-section__name">{product.name}</h3>

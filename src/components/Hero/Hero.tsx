@@ -1,6 +1,6 @@
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import React, { useRef, useEffect } from 'react';
-import wheelImage from '../../assets/pngegg (79).png';
+import wheelImage from '/assets/pngegg (79).png';
 
 const splitText = (text: string) => text.split('').map((char, i) => (
   <motion.span
@@ -196,7 +196,7 @@ const Hero = () => {
             {/* Animated Tyre Image */}
             <motion.img
               src={wheelImage}
-              alt="Premium Performance Tyres"
+              alt="ALNSR ALDAHABI TYRES"
               className="w-full h-full object-contain z-10 transition-transform duration-400 rounded-full"
               animate={{
                 rotateZ: [0, 360],
