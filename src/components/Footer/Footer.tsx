@@ -34,7 +34,7 @@ const Footer = () => {
         <div className="footer__grid">
           {/* Company Info */}
           <motion.div 
-            className="footer__section"
+            className="footer__section footer__section--main"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -59,59 +59,46 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Quick Links */}
+          {/* Contact Info */}
           <motion.div 
-            className="footer__section"
+            className="footer__section footer__section--contact"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="footer__title">Quick Links</h3>
-            <ul className="footer__links">
-              {['Home', 'Products', 'About Us', 'Contact', 'FAQ'].map((link) => (
-                <motion.li
-                  key={link}
-                  whileHover={{ x: 10 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                >
-                  <a href="#" className="footer__link">{link}</a>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div 
-            className="footer__section"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="footer__title">Contact Us</h3>
+            <h3 className="footer__title">Get in Touch</h3>
             <ul className="footer__contact">
-              <li>
+              <motion.li
+                whileHover={{ x: 10 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
                 <i className="fas fa-map-marker-alt"></i>
                 <span>123 Performance Street, Racing City</span>
-              </li>
-              <li>
+              </motion.li>
+              <motion.li
+                whileHover={{ x: 10 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
                 <i className="fas fa-phone"></i>
                 <span>+1 (555) 123-4567</span>
-              </li>
-              <li>
+              </motion.li>
+              <motion.li
+                whileHover={{ x: 10 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
                 <i className="fas fa-envelope"></i>
                 <span>info@gtrtyres.com</span>
-              </li>
+              </motion.li>
             </ul>
           </motion.div>
 
           {/* Newsletter */}
           <motion.div 
-            className="footer__section"
+            className="footer__section footer__section--newsletter"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
             <h3 className="footer__title">Stay Updated</h3>
@@ -140,9 +127,21 @@ const Footer = () => {
             © {currentYear} GT-R TYRES. All rights reserved.
           </div>
           <div className="footer__legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
+            <motion.a 
+              href="#"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >Privacy Policy</motion.a>
+            <motion.a 
+              href="#"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >Terms of Service</motion.a>
+            <motion.a 
+              href="#"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >Cookie Policy</motion.a>
           </div>
         </div>
       </div>
