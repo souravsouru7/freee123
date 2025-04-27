@@ -4,24 +4,6 @@ import wheelImage from '/assets/pngegg (79).png';
 import logoImage from '../../assets/Alnsr Aldahabi Tyre Trading Logo- White.png';
 import styles from './Hero.module.scss';
 
-const splitText = (text: string) => text.split('').map((char, i) => (
-  <motion.span
-    key={i}
-    initial={{ y: 60, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{ 
-      delay: 0.1 + i * 0.04, 
-      type: 'spring', 
-      stiffness: 200,
-      damping: 20,
-      mass: 1
-    }}
-    className={styles.hero__text_char}
-  >
-    {char === ' ' ? '\u00A0' : char}
-  </motion.span>
-));
-
 const Hero = () => {
   const cardRef = useRef<HTMLDivElement>(null);
   const wheelRef = useRef<HTMLDivElement>(null);

@@ -1,6 +1,6 @@
 import './App.scss';
 import ProductSection from './components/ProductSection';
-import Header from './components/Header/Header'
+
 import Hero from './components/Hero/Hero'
 import AboutUs from './components/AboutUs/AboutUs'
 import ContactUs from './components/ContactUs/ContactUs'
