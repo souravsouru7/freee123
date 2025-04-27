@@ -1,19 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import './FloatingButtons.scss';
 
 const FloatingButtons: React.FC = () => {
-  const [showScrollTop, setShowScrollTop] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(true);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
