@@ -40,6 +40,16 @@ const ProductSection: React.FC = () => {
     console.error('Image failed to load:', e.currentTarget.src);
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact-us');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section className="product-section">
       <div className="product-section__container">
@@ -76,9 +86,14 @@ const ProductSection: React.FC = () => {
                 />
               </div>
               <h3 className="product-section__name">{product.name}</h3>
-              <button className="product-section__button">
+              <motion.button 
+                className="product-section__button"
+                onClick={scrollToContact}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 Enquire Now
-              </button>
+              </motion.button>
             </motion.div>
           ))}
         </div>

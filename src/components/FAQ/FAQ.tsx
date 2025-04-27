@@ -10,6 +10,13 @@ interface FAQItem {
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact-us');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const faqItems: FAQItem[] = [
     {
       question: "What types of tires do you offer?",
@@ -153,6 +160,7 @@ const FAQ = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="cta-button"
+            onClick={scrollToContact}
           >
             <span className="relative z-10">Contact Support</span>
             <motion.div

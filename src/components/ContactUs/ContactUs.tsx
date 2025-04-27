@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaperPlane, FaUser, FaComment, FaBuilding, FaGlobe } from 'react-icons/fa';
 import './ContactUs.scss';
 
 interface ContactUsProps {
@@ -14,6 +14,8 @@ const ContactUs = ({ id }: ContactUsProps) => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -23,10 +25,19 @@ const ContactUs = ({ id }: ContactUsProps) => {
   const contactScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
   const contactOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setSubmitSuccess(true);
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -47,14 +58,20 @@ const ContactUs = ({ id }: ContactUsProps) => {
     {
       icon: <FaEnvelope className="icon" />,
       title: "Email",
-      content:"alnsraldahabityrestrading@gmail.com",
-      link: "alnsraldahabityrestrading@gmail.com"
+      content: "alnsraldahabityrestrading@gmail.com",
+      link: "mailto:alnsraldahabityrestrading@gmail.com"
     },
     {
       icon: <FaMapMarkerAlt className="icon" />,
       title: "Location",
       content: "Dubai, UAE",
       link: "https://maps.google.com"
+    },
+    {
+      icon: <FaBuilding className="icon" />,
+      title: "Business Hours",
+      content: "Mon - Fri: 9:00 AM - 6:00 PM",
+      link: "#"
     }
   ];
 
@@ -90,33 +107,37 @@ const ContactUs = ({ id }: ContactUsProps) => {
             ease: "linear"
           }}
         />
+        <div className="location-marker">
+          <FaGlobe className="globe-icon" />
+          <span>Dubai, UAE</span>
+        </div>
       </div>
 
       <div className="content-wrapper">
         <div className="contact-info">
-          <motion.h1
+          <motion.div
+            className="header-content"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            CONTACT
-            <br />
-            <motion.span 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              US
-            </motion.span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-          >
-            Get in Touch
-          </motion.p>
+            <h1>
+              CONTACT
+              <br />
+              <motion.span 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                US
+              </motion.span>
+            </h1>
+            <p>Get in Touch with Us</p>
+            <div className="location-badge">
+              <FaMapMarkerAlt />
+              <span>Dubai, UAE</span>
+            </div>
+          </motion.div>
 
           <div className="contact-cards">
             {contactInfo.map((info, index) => (
@@ -129,7 +150,7 @@ const ContactUs = ({ id }: ContactUsProps) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.4 + index * 0.1 }}
               >
-                <div>{info.icon}</div>
+                <div className="icon-wrapper">{info.icon}</div>
                 <h3>{info.title}</h3>
                 <p>{info.content}</p>
               </motion.a>
@@ -146,47 +167,74 @@ const ContactUs = ({ id }: ContactUsProps) => {
           >
             <h3>Send us a Message</h3>
             
-            <div className="space-y-4">
+            <div className="form-fields">
               <div className="form-group">
-                <label>Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
+                <div className="input-wrapper">
+                  <FaUser className="input-icon" />
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your Name"
+                    required
+                  />
+                </div>
               </div>
               
               <div className="form-group">
-                <label>Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
+                <div className="input-wrapper">
+                  <FaEnvelope className="input-icon" />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Your Email"
+                    required
+                  />
+                </div>
               </div>
               
               <div className="form-group">
-                <label>Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                />
+                <div className="input-wrapper">
+                  <FaComment className="input-icon" />
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Your Message"
+                    required
+                  />
+                </div>
               </div>
               
               <motion.button
                 type="submit"
+                className={isSubmitting ? 'submitting' : ''}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                disabled={isSubmitting}
               >
-                <FaPaperPlane />
-                Send Message
+                {isSubmitting ? (
+                  <div className="loading-spinner" />
+                ) : (
+                  <>
+                    <FaPaperPlane />
+                    Send Message
+                  </>
+                )}
               </motion.button>
+
+              {submitSuccess && (
+                <motion.div
+                  className="success-message"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  Message sent successfully!
+                </motion.div>
+              )}
             </div>
           </motion.form>
         </div>
