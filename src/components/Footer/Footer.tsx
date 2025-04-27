@@ -32,33 +32,6 @@ const Footer = () => {
       {/* Main Content */}
       <div className="footer__content">
         <div className="footer__grid">
-          {/* Company Info */}
-          <motion.div 
-            className="footer__section footer__section--main"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="footer__title">GT-R TYRES</h3>
-            <p className="footer__text">
-              Revolutionizing the way you experience the road. Our commitment to excellence drives every innovation.
-            </p>
-            <div className="footer__social">
-              {['facebook', 'twitter', 'instagram', 'linkedin'].map((social) => (
-                <motion.a
-                  key={social}
-                  href="#"
-                  className="footer__social-link"
-                  whileHover={{ scale: 1.2, y: -5 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <i className={`fab fa-${social}`}></i>
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Contact Info */}
           <motion.div 
             className="footer__section footer__section--contact"
