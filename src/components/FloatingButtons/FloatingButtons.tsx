@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaWhatsapp, FaEnvelope } from 'react-icons/fa';
+import { FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa';
 import './FloatingButtons.scss';
 
 const FloatingButtons: React.FC = () => {
@@ -25,6 +25,12 @@ const FloatingButtons: React.FC = () => {
         className="mail-button"
       >
         <FaEnvelope color="#fff" size={24} />
+      </a>
+      <a
+        href="tel:+1234567890"
+        className="call-button"
+      >
+        <FaPhone color="#fff" size={24} />
       </a>
       
       <button onClick={scrollToTop} className="scroll-top-button">
