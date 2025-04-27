@@ -43,8 +43,8 @@ const ContactUs = () => {
     {
       icon: <FaEnvelope className="icon" />,
       title: "Email",
-      content: "info@alnsr.com",
-      link: "mailto:info@alnsr.com"
+      content:"alnsraldahabityrestrading@gmail.com",
+      link: "alnsraldahabityrestrading@gmail.com"
     },
     {
       icon: <FaMapMarkerAlt className="icon" />,

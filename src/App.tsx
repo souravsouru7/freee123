@@ -6,6 +6,7 @@ import AboutUs from './components/AboutUs/AboutUs'
 import ContactUs from './components/ContactUs/ContactUs'
 import FAQ from './components/FAQ/FAQ'
 import Footer from './components/Footer/Footer'
+import FloatingButtons from './components/FloatingButtons/FloatingButtons'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <ContactUs />
       <FAQ />
       <Footer />
+      <FloatingButtons />
     </div>
   );
 }

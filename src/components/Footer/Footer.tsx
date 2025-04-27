@@ -88,7 +88,7 @@ const Footer = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <i className="fas fa-envelope"></i>
-                <span>info@gtrtyres.com</span>
+                <span>alnsraldahabityrestrading@gmail.com</span>
               </motion.li>
             </ul>
           </motion.div>

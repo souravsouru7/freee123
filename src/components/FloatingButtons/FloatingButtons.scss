@@ -1,0 +1,63 @@
+.floating-buttons {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+
+  .whatsapp-button,
+  .mail-button,
+  .scroll-top-button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: none;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    background-color: #4a5568;
+  }
+
+  .whatsapp-button {
+    background-color: #25D366;
+
+    &:hover {
+      background-color: #128C7E;
+      transform: translateY(-2px);
+    }
+  }
+
+  .mail-button {
+    background-color: #4a5568;
+
+    &:hover {
+      background-color: #2d3748;
+      transform: translateY(-2px);
+    }
+  }
+
+  .scroll-top-button {
+    background-color: #718096;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      background-color: #4a5568;
+      transform: translateY(-2px);
+    }
+  }
+} 
