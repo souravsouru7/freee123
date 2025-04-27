@@ -346,7 +346,8 @@ const Hero = () => {
                 transition={{ delay: 2.0 }}
               >
                 Located in the heart of Dubai, UAE, ALNSR ALDAHABI TYRES TRADING has been a leading name in the tire and
-                outfit trading industry for nearly two decades. We specialize in a wide range of car tires, truck tires, and vehicle
+                outfit trading industry for nearly two decades.
+                 We specialize in a wide range of car tires, truck tires, and vehicle
                 outfit products, serving both individual customers and businesses with excellence, reliability, and competitive
                 pricing. Whether you are looking for premium tires for your personal car or durable solutions for your commercial fleet,
                 we are here to keep you moving safely and smoothly.
