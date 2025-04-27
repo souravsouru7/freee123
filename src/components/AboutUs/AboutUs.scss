@@ -13,15 +13,11 @@
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: radial-gradient(circle at center, rgba(220, 38, 38, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+    background: none;
     overflow: hidden;
 
     &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(45deg, rgba(220, 38, 38, 0.1), rgba(0, 0, 0, 0.8));
-      animation: gradientMove 15s ease-in-out infinite;
+      display: none;
     }
   }
 
@@ -255,6 +251,7 @@
     box-shadow: none;
     border-radius: 50%;
     overflow: visible;
+    filter: none;
 
     @media (min-width: 768px) {
       width: 440px;
@@ -273,6 +270,7 @@
       transition: transform 0.4s;
       border-radius: 50%;
       box-shadow: none;
+      filter: none;
 
       &:hover {
         transform: scale(1.13);

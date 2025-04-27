@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import wheelImage from '../../assets/pngegg_(80)[1].png';
+import wheelImage from '../../assets/pngwing.com (1).png';
 import './AboutUs.scss';
 
 interface AboutUsProps {
@@ -138,8 +138,6 @@ const AboutUs = ({ id }: AboutUsProps) => {
               alt="Premium Performance Tyres"
               animate={{
                 rotateZ: [0, 360],
-                rotateX: [0, 15, 0, -15, 0],
-                y: [0, -30, 0, 30, 0],
                 scale: [1, 1.08, 1]
               }}
               transition={{

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './LoadingScreen.scss';
-import logo from '../../assets/Alnsr Aldahabi Tyre Trading Logo.png';
+import logo from '../../assets/logo.png';
 
 const LoadingScreen: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
