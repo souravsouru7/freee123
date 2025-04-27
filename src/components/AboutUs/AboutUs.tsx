@@ -14,8 +14,8 @@ const AboutUs = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0]);
 
   const stats = [
-    { number: "2006", label: "Founded" },
-    { number: "17+", label: "Years of Experience" },
+    { number: "2007", label: "Founded" },
+    { number: "18+", label: "Years of Experience" },
     { number: "100%", label: "Customer Satisfaction" },
     { number: "24/7", label: "Expert Support" }
   ];
