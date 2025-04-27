@@ -136,23 +136,6 @@ const Footer = () => {
               Dimark
             </motion.a>
           </div>
-          <div className="footer__legal">
-            <motion.a 
-              href="#"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >Privacy Policy</motion.a>
-            <motion.a 
-              href="#"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >Terms of Service</motion.a>
-            <motion.a 
-              href="#"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >Cookie Policy</motion.a>
-          </div>
         </div>
       </div>
     </footer>
