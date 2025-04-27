@@ -7,8 +7,19 @@ import FAQ from './components/FAQ/FAQ'
 import Footer from './components/Footer/Footer'
 import FloatingButtons from './components/FloatingButtons/FloatingButtons'
 import LoadingScreen from './components/LoadingScreen/LoadingScreen'
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    // Reset scroll position to top when component mounts
+    window.scrollTo(0, 0);
+    
+    // Prevent scroll restoration
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
   return (
     <div className="App">
       <LoadingScreen />
