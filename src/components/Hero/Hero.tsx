@@ -78,6 +78,12 @@ const Hero = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
+      {/* Mobile-only logo at the very top */}
+      <div className={styles.hero__logo_mobile}>
+        <div className={styles.hero__logo_mobile_blur}></div>
+        <div className={styles.hero__logo_mobile_overlay}></div>
+        <img src={logoImage} alt="ALNSR ALDAHABI TYRES" className={styles.hero__logo} />
+      </div>
       {/* 3D Background Shapes */}
       <div className={styles.hero__3d_shapes}>
         <motion.svg 
@@ -245,7 +251,7 @@ const Hero = () => {
           <div className={styles.hero__text_wrapper}>
             <motion.div style={{ y: headlineY, opacity: headlineOpacity }}>
               <motion.div
-                className={styles.hero__logo_container}
+                className={styles.hero__logo_container + ' ' + styles.hero__logo_desktop}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}

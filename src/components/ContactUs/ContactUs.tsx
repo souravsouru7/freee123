@@ -58,6 +58,7 @@ const ContactUs = () => {
     <motion.section
       ref={containerRef}
       className="contact-section"
+      id="contact-us"
       style={{ scale: contactScale, opacity: contactOpacity }}
     >
       <div className="background-elements">

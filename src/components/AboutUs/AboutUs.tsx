@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import wheelImage from '../../assets/images/pngwing.com.png';
+import wheelImage from '../../assets/pngegg_(80)[1].png';
 import './AboutUs.scss';
 
 const AboutUs = () => {
