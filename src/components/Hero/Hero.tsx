@@ -306,8 +306,14 @@ const Hero = () => {
                 whileHover={{ scale: 1.12, boxShadow: '0 0 30px #DC2626, 0 0 60px #DC2626' }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                onClick={() => {
+                  const contactSection = document.getElementById('contact-us');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
-                SHOP NOW
+                GET QUOTE
               </motion.button>
 
               <motion.button
@@ -315,6 +321,12 @@ const Hero = () => {
                 whileHover={{ scale: 1.12, boxShadow: '0 0 30px #fff, 0 0 60px #fff' }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                onClick={() => {
+                  const aboutSection = document.getElementById('about');
+                  if (aboutSection) {
+                    aboutSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 LEARN MORE
               </motion.button>

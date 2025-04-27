@@ -3,7 +3,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
 import './ContactUs.scss';
 
-const ContactUs = () => {
+interface ContactUsProps {
+  id?: string;
+}
+
+const ContactUs = ({ id }: ContactUsProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -58,7 +62,7 @@ const ContactUs = () => {
     <motion.section
       ref={containerRef}
       className="contact-section"
-      id="contact-us"
+      id={id}
       style={{ scale: contactScale, opacity: contactOpacity }}
     >
       <div className="background-elements">

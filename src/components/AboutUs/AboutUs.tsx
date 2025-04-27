@@ -3,7 +3,11 @@ import { useRef } from 'react';
 import wheelImage from '../../assets/pngegg_(80)[1].png';
 import './AboutUs.scss';
 
-const AboutUs = () => {
+interface AboutUsProps {
+  id?: string;
+}
+
+const AboutUs = ({ id }: AboutUsProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -24,6 +28,7 @@ const AboutUs = () => {
     <motion.section 
       ref={containerRef}
       className="about-us"
+      id={id}
       style={{ y, opacity }}
     >
       <div className="about-us__background" />

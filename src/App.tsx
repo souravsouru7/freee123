@@ -13,9 +13,9 @@ function App() {
     <div className="App">
       <LoadingScreen />
       <Hero />
-      <AboutUs />
+      <AboutUs id="about" />
       <ProductSection />
-      <ContactUs />
+      <ContactUs id="contact-us" />
       <FAQ />
       <Footer />
       <FloatingButtons />
