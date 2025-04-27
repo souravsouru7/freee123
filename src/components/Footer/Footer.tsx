@@ -124,7 +124,17 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="footer__bottom">
           <div className="footer__copyright">
-            © {currentYear} GT-R TYRES. All rights reserved.
+            © {currentYear} Alnsr Aldahabi Tyres Trading. All rights reserved. Website design and development by{' '}
+            <motion.a 
+              href="https://www.dimark.ae"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="footer__link"
+            >
+              Dimark
+            </motion.a>
           </div>
           <div className="footer__legal">
             <motion.a 

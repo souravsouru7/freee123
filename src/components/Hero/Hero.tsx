@@ -1,14 +1,21 @@
-import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
+import { motion, useAnimation, useScroll, useTransform, useMotionValue, useVelocity } from 'framer-motion';
 import React, { useRef, useEffect } from 'react';
 import wheelImage from '/assets/pngegg (79).png';
+import styles from './Hero.module.scss';
 
 const splitText = (text: string) => text.split('').map((char, i) => (
   <motion.span
     key={i}
     initial={{ y: 60, opacity: 0 }}
     animate={{ y: 0, opacity: 1 }}
-    transition={{ delay: 0.1 + i * 0.04, type: 'spring', stiffness: 200 }}
-    className="inline-block will-change-transform will-change-opacity"
+    transition={{ 
+      delay: 0.1 + i * 0.04, 
+      type: 'spring', 
+      stiffness: 200,
+      damping: 20,
+      mass: 1
+    }}
+    className={styles.hero__text_char}
   >
     {char === ' ' ? '\u00A0' : char}
   </motion.span>
@@ -25,9 +32,14 @@ const Hero = () => {
     offset: ["start start", "end start"]
   });
 
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const mouseVelocityX = useVelocity(mouseX);
+
   const tyreScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.7]);
   const tyreOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const tyreY = useTransform(scrollYProgress, [0, 0.5], [0, -120]);
+  const tyreRotate = useTransform(mouseVelocityX, [-1000, 0, 1000], [-30, 0, 30]);
 
   const headlineY = useTransform(scrollYProgress, [0, 0.4], [0, -80]);
   const headlineOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
@@ -52,32 +64,46 @@ const Hero = () => {
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
     
-    card.style.transform = `perspective(1000px) rotateY(${-x / 20}deg) rotateX(${y / 20}deg)`;
-    wheel.style.transform = `perspective(1000px) rotateY(${-x / 15}deg) rotateX(${y / 15}deg)`;
+    mouseX.set(x);
+    mouseY.set(y);
+
+    const rotateX = y / 20;
+    const rotateY = -x / 20;
+    
+    card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateZ(20px)`;
+    wheel.style.transform = `perspective(1000px) rotateY(${rotateY * 1.5}deg) rotateX(${rotateX * 1.5}deg) translateZ(30px)`;
     
     document.querySelectorAll('.hero__3d-shape').forEach((el, i) => {
-      (el as HTMLElement).style.transform = `translate3d(${-x / (20 + i * 5)}px, ${y / (25 + i * 5)}px, ${i * 10}px) scale(${1 + i * 0.05})`;
+      const depth = i * 10;
+      const scale = 1 + i * 0.05;
+      (el as HTMLElement).style.transform = `translate3d(${-x / (20 + i * 5)}px, ${y / (25 + i * 5)}px, ${depth}px) scale(${scale})`;
     });
   };
 
   const handleMouseLeave = () => {
-    if (cardRef.current) cardRef.current.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
-    if (wheelRef.current) wheelRef.current.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+    if (cardRef.current) cardRef.current.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateZ(0)';
+    if (wheelRef.current) wheelRef.current.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateZ(0)';
+    mouseX.set(0);
+    mouseY.set(0);
   };
 
   return (
     <motion.section 
       ref={containerRef}
-      className="min-h-screen w-screen relative overflow-hidden flex items-center justify-center bg-transparent"
+      className={styles.hero__container}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
     >
       {/* 3D Background Shapes */}
-      <div className="absolute inset-0 z-0">
+      <div className={styles.hero__3d_shapes}>
         <motion.svg 
-          className="hero__3d-shape hero__3d-cube absolute" 
+          className={`${styles.hero__3d_shape} ${styles.hero__3d_cube}`}
           viewBox="0 0 60 60"
           animate={{
             y: [0, 20, 0],
-            rotate: [0, 5, 0]
+            rotate: [0, 5, 0],
+            scale: [1, 1.1, 1]
           }}
           transition={{
             duration: 8,
@@ -88,11 +114,12 @@ const Hero = () => {
           <rect x="10" y="10" width="40" height="40" rx="8" fill="#dc2626" opacity="0.18" />
         </motion.svg>
         <motion.svg 
-          className="hero__3d-shape hero__3d-sphere absolute" 
+          className={`${styles.hero__3d_shape} ${styles.hero__3d_sphere}`}
           viewBox="0 0 60 60"
           animate={{
             y: [0, -20, 0],
-            rotate: [0, -5, 0]
+            rotate: [0, -5, 0],
+            scale: [1, 1.1, 1]
           }}
           transition={{
             duration: 10,
@@ -103,11 +130,12 @@ const Hero = () => {
           <circle cx="30" cy="30" r="24" fill="#fff" opacity="0.10" />
         </motion.svg>
         <motion.svg 
-          className="hero__3d-shape hero__3d-poly absolute" 
+          className={`${styles.hero__3d_shape} ${styles.hero__3d_poly}`}
           viewBox="0 0 60 60"
           animate={{
             y: [0, 15, 0],
-            rotate: [0, 3, 0]
+            rotate: [0, 3, 0],
+            scale: [1, 1.05, 1]
           }}
           transition={{
             duration: 7,
@@ -118,11 +146,12 @@ const Hero = () => {
           <polygon points="30,8 52,52 8,52" fill="#ef4444" opacity="0.13" />
         </motion.svg>
         <motion.svg 
-          className="hero__3d-shape hero__3d-star absolute" 
+          className={`${styles.hero__3d_shape} ${styles.hero__3d_star}`}
           viewBox="0 0 60 60"
           animate={{
             y: [0, -15, 0],
-            rotate: [0, -3, 0]
+            rotate: [0, -3, 0],
+            scale: [1, 1.05, 1]
           }}
           transition={{
             duration: 9,
@@ -133,7 +162,7 @@ const Hero = () => {
           <polygon points="30,5 36,24 56,24 39,36 45,55 30,43 15,55 21,36 4,24 24,24" fill="#fff" opacity="0.08" />
         </motion.svg>
         <motion.svg 
-          className="hero__3d-shape hero__3d-ring absolute" 
+          className={`${styles.hero__3d_shape} ${styles.hero__3d_ring}`}
           viewBox="0 0 60 60"
           animate={{
             scale: [1, 1.1, 1],
@@ -151,7 +180,7 @@ const Hero = () => {
 
       {/* Floating SVG shapes */}
       <motion.svg 
-        className="hero__decor hero__decor--circle absolute" 
+        className={`${styles.hero__decor} ${styles.hero__decor_circle}`}
         viewBox="0 0 60 60"
         animate={{
           rotate: [0, 360],
@@ -167,7 +196,7 @@ const Hero = () => {
       </motion.svg>
       
       <motion.svg 
-        className="hero__decor hero__decor--triangle absolute" 
+        className={`${styles.hero__decor} ${styles.hero__decor_triangle}`}
         viewBox="0 0 48 48"
         animate={{
           rotate: [0, -360],
@@ -182,22 +211,33 @@ const Hero = () => {
         <polygon points="24,4 44,44 4,44" fill="#DC2626" />
       </motion.svg>
 
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0a0a0a] to-[#DC2626] bg-[length:400%_400%] animate-[gradientMove_15s_ease-in-out_infinite] opacity-85 mix-blend-overlay"></div>
+      <div className={styles.hero__gradient}></div>
 
-      <div className="relative z-10 w-screen min-h-screen flex items-center justify-between px-[6vw] gap-[6vw]" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-        <div className="flex items-center justify-end flex-1 min-w-[340px]">
+      <motion.div 
+        className={styles.hero__content} 
+        onMouseMove={handleMouseMove} 
+        onMouseLeave={handleMouseLeave}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <div className={styles.hero__wheel_container}>
           <motion.div
             ref={wheelRef}
-            className="relative w-[440px] h-[440px] flex items-center justify-center transition-all duration-400 bg-[radial-gradient(circle_at_60%_60%,#dc2626_0%,transparent_80%)] rounded-full shadow-[0_0_100px_0_#dc2626a0,inset_0_0_60px_0_#dc262680] overflow-visible hover:scale-105"
+            className={styles.hero__wheel}
             animate={{ rotate: [0, 360] }}
             transition={{ repeat: Infinity, duration: 16, ease: 'linear' }}
-            style={{ scale: tyreScale, opacity: tyreOpacity, y: tyreY }}
+            style={{ 
+              scale: tyreScale, 
+              opacity: tyreOpacity, 
+              y: tyreY,
+              rotate: tyreRotate
+            }}
           >
-            {/* Animated Tyre Image */}
             <motion.img
               src={wheelImage}
               alt="ALNSR ALDAHABI TYRES"
-              className="w-full h-full object-contain z-10 transition-transform duration-400 rounded-full"
+              className={styles.hero__wheel_image}
               animate={{
                 rotateZ: [0, 360],
                 rotateX: [0, 15, 0, -15, 0],
@@ -211,17 +251,18 @@ const Hero = () => {
                 repeatType: 'loop'
               }}
               whileHover={{
-                scale: 1.13
+                scale: 1.13,
+                transition: { duration: 0.3 }
               }}
             />
           </motion.div>
         </div>
 
-        <div className="flex flex-col justify-center flex-1 min-w-[340px]">
-          <div className="w-full max-w-none mx-auto mb-8">
+        <div className={styles.hero__text_container}>
+          <div className={styles.hero__text_wrapper}>
             <motion.div style={{ y: headlineY, opacity: headlineOpacity }}>
               <motion.h1
-                className="text-[4.2rem] font-black tracking-[-2px] text-white mb-2 leading-[1.1] [text-shadow:0_2px_20px_#dc262680]"
+                className={styles.hero__title}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
@@ -229,7 +270,7 @@ const Hero = () => {
                 {splitText('ALNSR ALDAHABI')}
                 <br />
                 <motion.span 
-                  className="block text-[3.2rem] text-[#DC2626] font-black tracking-[-1px] mt-0.5 bg-gradient-to-r from-[#DC2626] to-[#ef4444] bg-clip-text text-transparent filter drop-shadow-[0_2px_8px_#dc262680]"
+                  className={styles.hero__subtitle}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
@@ -240,7 +281,7 @@ const Hero = () => {
             </motion.div>
 
             <motion.div
-              className="text-white text-lg font-normal mb-5 tracking-[1.5px] [text-shadow:0_2px_12px_#dc2626a0] bg-gradient-to-r from-white to-[#DC2626] bg-clip-text text-transparent"
+              className={styles.hero__description}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
@@ -249,7 +290,7 @@ const Hero = () => {
             </motion.div>
 
             <motion.div
-              className="text-[#bbb] text-sm uppercase mt-8 mb-2 tracking-wider font-semibold"
+              className={styles.hero__location_label}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4 }}
@@ -258,16 +299,16 @@ const Hero = () => {
             </motion.div>
 
             <motion.div
-              className="text-[2.2rem] font-extrabold text-white mb-2 tracking-[1px] [text-shadow:0_2px_12px_#dc2626a0]"
+              className={styles.hero__location}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 1.6, type: 'spring' }}
+              transition={{ delay: 1.6, type: 'spring', stiffness: 100 }}
             >
               DUBAI, UAE
             </motion.div>
 
             <motion.div
-              className="text-[#DC2626] text-base font-semibold mb-5 tracking-[1px]"
+              className={styles.hero__year}
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.8 }}
@@ -275,19 +316,21 @@ const Hero = () => {
               Since 2006
             </motion.div>
 
-            <div className="flex gap-6 mt-10">
+            <div className={styles.hero__buttons}>
               <motion.button
-                className="relative overflow-hidden px-8 py-3 bg-[#DC2626] text-white font-bold rounded-full transition-all duration-400 hover:scale-110 hover:shadow-[0_0_30px_#DC2626,0_0_60px_#DC2626]"
+                className={`${styles.hero__button} ${styles.hero__button_primary}`}
                 whileHover={{ scale: 1.12, boxShadow: '0 0 30px #DC2626, 0 0 60px #DC2626' }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 SHOP NOW
               </motion.button>
 
               <motion.button
-                className="relative overflow-hidden px-8 py-3 bg-transparent text-white font-bold rounded-full border-2 border-white transition-all duration-400 hover:scale-110 hover:shadow-[0_0_30px_#fff,0_0_60px_#fff]"
+                className={`${styles.hero__button} ${styles.hero__button_secondary}`}
                 whileHover={{ scale: 1.12, boxShadow: '0 0 30px #fff, 0 0 60px #fff' }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 LEARN MORE
               </motion.button>
@@ -295,7 +338,7 @@ const Hero = () => {
           </div>
 
           <motion.p
-            className="text-white text-lg leading-relaxed"
+            className={styles.hero__paragraph}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.0 }}
@@ -308,32 +351,32 @@ const Hero = () => {
           </motion.p>
 
           <motion.div
-            className="flex items-center gap-4 mt-8"
+            className={styles.hero__scroll_indicator}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.2 }}
           >
-            <div className="flex gap-2">
+            <div className={styles.hero__dots_container}>
               <motion.span 
-                className="w-2 h-2 rounded-full bg-white/30"
+                className={styles.hero__dot}
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               ></motion.span>
               <motion.span 
-                className="w-2 h-2 rounded-full bg-white"
+                className={`${styles.hero__dot} ${styles.hero__dot_active}`}
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
               ></motion.span>
               <motion.span 
-                className="w-2 h-2 rounded-full bg-white/30"
+                className={styles.hero__dot}
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity, delay: 1 }}
               ></motion.span>
             </div>
-            <span className="text-white text-sm tracking-wider">SCROLL TO EXPLORE</span>
+            <span className={styles.hero__scroll_text}>SCROLL TO EXPLORE</span>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </motion.section>
   );
 };
