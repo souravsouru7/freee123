@@ -1,6 +1,7 @@
 import { motion, useAnimation, useScroll, useTransform, useMotionValue, useVelocity } from 'framer-motion';
 import React, { useRef, useEffect } from 'react';
 import wheelImage from '/assets/pngegg (79).png';
+import logoImage from '../../assets/Alnsr Aldahabi Tyre Trading Logo- White.png';
 import styles from './Hero.module.scss';
 
 const splitText = (text: string) => text.split('').map((char, i) => (
@@ -261,23 +262,18 @@ const Hero = () => {
         <div className={styles.hero__text_container}>
           <div className={styles.hero__text_wrapper}>
             <motion.div style={{ y: headlineY, opacity: headlineOpacity }}>
-              <motion.h1
-                className={styles.hero__title}
+              <motion.div
+                className={styles.hero__logo_container}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {splitText('ALNSR ALDAHABI')}
-                <br />
-                <motion.span 
-                  className={styles.hero__subtitle}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                >
-                  {splitText('TYRES TRADING')}
-                </motion.span>
-              </motion.h1>
+                <img 
+                  src={logoImage} 
+                  alt="ALNSR ALDAHABI TYRES" 
+                  className={styles.hero__logo}
+                />
+              </motion.div>
             </motion.div>
 
             <motion.div
