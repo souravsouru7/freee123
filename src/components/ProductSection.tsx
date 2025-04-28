@@ -7,7 +7,7 @@ const ProductSection: React.FC = () => {
     {
       id: 1,
       name: 'HONOUR',
-      image: '/assets/new/HONOUR[2].png',
+      image: '/assets/pngegg (73).png',
     },
     {
       id: 2,
@@ -22,12 +22,12 @@ const ProductSection: React.FC = () => {
     {
       id: 4,
       name: 'DUNLOP',
-      image: '/assets/new/DUNLOP[1].png',
+      image: '/assets/pngegg (79).png',
     },
     {
       id: 5,
       name: 'YOKOHAMA',
-      image: '/assets/new/YOKOHAMA[1].png',
+      image: '/assets/pngegg (83).png',
     },
     {
       id: 6,
