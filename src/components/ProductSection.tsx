@@ -6,33 +6,33 @@ const ProductSection: React.FC = () => {
   const products = [
     {
       id: 1,
-      name: 'Apollo',
-      image: '/assets/pngegg (73).png',
+      name: 'HONOUR',
+      image: '/assets/new/HONOUR[2].png',
     },
     {
       id: 2,
-      name: 'BFGoodrich',
+      name: 'SCORPION',
       image: '/assets/pngegg (79).png',
     },
     {
       id: 3,
-      name: 'Michelin',
+      name: 'KUMHO',
       image: '/assets/pngegg (83).png',
     },
     {
       id: 4,
-      name: 'Yokohama',
-      image: '/assets/pngegg (73).png',
+      name: 'DUNLOP',
+      image: '/assets/new/DUNLOP[1].png',
     },
     {
       id: 5,
-      name: 'Bridgestone',
-      image: '/assets/pngegg (73).png',
+      name: 'YOKOHAMA',
+      image: '/assets/new/YOKOHAMA[1].png',
     },
     {
       id: 6,
-      name: 'Continental',
-      image: '/assets/pngegg (79).png',
+      name: 'APOLLO',
+      image: '/assets/new/APOLLO[1].png',
     },
   ];
 
