@@ -2,21 +2,6 @@ import { useState } from 'react';
 import styles from './FAQ.module.scss';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const QuestionIcon = ({ open }: { open: boolean }) => (
-  <motion.span
-    className={`${styles.icon} ${open ? 'open' : ''}`}
-    initial={{ rotate: 0 }}
-    animate={{ rotate: open ? 180 : 0, scale: open ? 1.1 : 1 }}
-    transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-  >
-    <svg viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="11" stroke="none" fill="currentColor" opacity="0.18" />
-      <path d="M12 7v6" stroke="#fff" strokeWidth="2.2" strokeLinecap="round"/>
-      <circle cx="12" cy="16.2" r="1.2" fill="#fff" />
-    </svg>
-  </motion.span>
-);
-
 const HeadlineIcon = () => (
   <span className={styles.headlineIcon}>
     <svg viewBox="0 0 64 64" fill="none">
