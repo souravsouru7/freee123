@@ -64,7 +64,7 @@ const ContactUs = ({ id }: ContactUsProps) => {
     {
       icon: <FaMapMarkerAlt className="icon" />,
       title: "Location",
-      content: "Dubai, UAE",
+      content: "Ras Al Khaimah, UAE",
       link: "https://maps.google.com"
     },
     {
@@ -109,7 +109,7 @@ const ContactUs = ({ id }: ContactUsProps) => {
         />
         <div className="location-marker">
           <FaGlobe className="globe-icon" />
-          <span>Dubai, UAE</span>
+          <span>RAK, UAE</span>
         </div>
       </div>
 
@@ -135,7 +135,7 @@ const ContactUs = ({ id }: ContactUsProps) => {
             <p>Get in Touch with Us</p>
             <div className="location-badge">
               <FaMapMarkerAlt />
-              <span>Dubai, UAE</span>
+              <span>RAK,UAE</span>
             </div>
           </motion.div>
 

@@ -89,4 +89,10 @@ section {
   100% {
     transform: translateY(-20px);
   }
+}
+
+html, body, #root, .App {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden !important;
 } 

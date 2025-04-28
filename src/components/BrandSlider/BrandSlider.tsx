@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import './BrandSlider.scss';
 
 // Import all images
@@ -28,6 +28,34 @@ import Wanli from '../../assets/tyrebrand/wanli.png';
 import Yokohama from '../../assets/tyrebrand/Yokohama.png';
 
 const BrandSlider: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    controls.start({
+      x: [0, -1000],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: isMobile ? 20 : 30,
+          ease: "linear",
+        },
+      },
+    });
+  }, [controls, isMobile]);
+
   const brands = [
     { name: 'Apollo', image: Apollo },
     { name: 'BFGoodrich', image: BFGoodrich },
@@ -62,17 +90,7 @@ const BrandSlider: React.FC = () => {
       <div className="brand-slider__container">
         <motion.div 
           className="brand-slider__track"
-          animate={{
-            x: [0, -1000],
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 30,
-              ease: "linear",
-            },
-          }}
+          animate={controls}
         >
           {duplicatedBrands.map((brand, index) => (
             <div key={index} className="brand-slider__item">
