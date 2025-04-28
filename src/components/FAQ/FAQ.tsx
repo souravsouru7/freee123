@@ -32,48 +32,114 @@ const FAQ = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0,
+      y: 20,
+      rotateX: -15
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.4, 0, 0.2, 1]
+      }
+    }
+  };
+
+  const answerVariants = {
+    hidden: { 
+      height: 0,
+      opacity: 0,
+      rotateX: -15
+    },
+    visible: {
+      height: 'auto',
+      opacity: 1,
+      rotateX: 0,
+      transition: {
+        duration: 0.4,
+        ease: [0.4, 0, 0.2, 1]
+      }
+    },
+    exit: {
+      height: 0,
+      opacity: 0,
+      rotateX: -15,
+      transition: {
+        duration: 0.3,
+        ease: [0.4, 0, 0.2, 1]
+      }
+    }
+  };
+
   return (
     <section className={styles.faqSection}>
       <div className={styles.container}>
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
           viewport={{ once: true }}
           className={styles.title}
         >
           Frequently Asked Questions
         </motion.h2>
-        <div className={styles.faqList}>
+        <motion.div 
+          className={styles.faqList}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              variants={itemVariants}
               className={styles.faqItem}
+              whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.2 }
+              }}
             >
-              <button
+              <motion.button
                 className={`${styles.faqQuestion} ${activeIndex === index ? styles.active : ''}`}
                 onClick={() => toggleFAQ(index)}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <span>{faq.question}</span>
                 <motion.span
-                  animate={{ rotate: activeIndex === index ? 45 : 0 }}
-                  transition={{ duration: 0.3 }}
+                  animate={{ 
+                    rotate: activeIndex === index ? 45 : 0,
+                    scale: activeIndex === index ? 1.1 : 1
+                  }}
+                  transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                   className={styles.plusIcon}
                 >
                   +
                 </motion.span>
-              </button>
+              </motion.button>
               <AnimatePresence>
                 {activeIndex === index && (
                   <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    variants={answerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
                     className={styles.faqAnswer}
                   >
                     <p>{faq.answer}</p>
@@ -82,7 +148,7 @@ const FAQ = () => {
               </AnimatePresence>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
