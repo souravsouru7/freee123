@@ -621,11 +621,7 @@
   margin-bottom: 2rem;
 
   @media (max-width: 480px) {
-    margin-bottom: 0.8rem;
-    width: 180px;
-    height: auto;
-    order: -2;
-    margin-top: 1.2rem;
+    display: none;
   }
 }
 
@@ -646,12 +642,7 @@
   }
 
   @media (max-width: 480px) {
-    max-width: 120px;
-    width: 120px;
-    height: 120px;
-    box-shadow: 0 0 24px 4px rgba(220,38,38,0.18), 0 0 0 6px rgba(255,255,255,0.7);
-    filter: drop-shadow(0 2px 8px rgba(220,38,38,0.18));
-    border-radius: 16px;
+    display: none;
   }
 }
 
@@ -659,7 +650,36 @@
   display: none;
 }
 
-.hero__logo_mobile_blur {
+@media (max-width: 480px) {
+  .hero__logo_mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 1.2rem;
+    z-index: 9999;
+    position: relative;
+    background: none;
+  }
+  .hero__logo_mobile img {
+    display: block !important;
+    max-width: 220px;
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    z-index: 9999;
+    position: relative;
+    filter: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+.hero__logo_mobile_blur,
+.hero__logo_mobile_overlay {
   display: none;
 }
 
@@ -673,7 +693,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 1.2rem;
+    margin-top: 0.8rem;
     margin-bottom: 1.2rem;
     z-index: 20;
     position: relative;
@@ -683,9 +703,9 @@
     display: none;
   }
   .hero__logo_mobile img.hero__logo {
-    max-width: 100px;
-    width: 100px;
-    height: 100px;
+    max-width: 120px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     z-index: 20;
     position: relative;
