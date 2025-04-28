@@ -32,7 +32,7 @@ const ProductSection: React.FC = () => {
     {
       id: 6,
       name: 'APOLLO',
-      image: '/assets/new/APOLLO[1].png',
+      image: '/assets/apollo-tyres-500x500.webp',
     },
   ];
 
