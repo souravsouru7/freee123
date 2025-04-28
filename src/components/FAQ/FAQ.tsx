@@ -35,6 +35,19 @@ const HeadlineBg = () => (
   </span>
 );
 
+const PlusIcon = ({ open }: { open: boolean }) => (
+  <motion.span
+    className={styles.plusIcon}
+    initial={{ rotate: 0 }}
+    animate={{ rotate: open ? 45 : 0 }}
+    transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+    aria-label={open ? 'Collapse' : 'Expand'}
+    role="img"
+  >
+    {open ? '–' : '+'}
+  </motion.span>
+);
+
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -132,8 +145,8 @@ const FAQ = () => {
               onClick={() => toggleFAQ(index)}
               aria-expanded={activeIndex === index}
             >
-              <QuestionIcon open={activeIndex === index} />
-              <span className="questionText">{faq.question}</span>
+              <PlusIcon open={activeIndex === index} />
+              <span className={styles.questionText}>{faq.question}</span>
             </button>
             <AnimatePresence initial={false}>
               {activeIndex === index && (
