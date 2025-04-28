@@ -886,4 +886,36 @@
     width: 100%;
     margin-top: 1.2rem;
   }
+}
+
+.faq-item {
+  position: relative;
+  height: 100%;
+  background: #111;
+
+  .faq-card {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    border-radius: 0.75rem;
+    transition: transform 0.3s ease;
+    z-index: 1;
+  }
+
+  .faq-card-hover {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), transparent);
+    border-radius: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+
+  .faq-content {
+    position: relative;
+    padding: 1.25rem;
+    height: 100%;
+    z-index: 3;
+  }
 } 

@@ -93,6 +93,7 @@
       .faq-item {
         position: relative;
         height: 100%;
+        background: #111;
 
         .faq-card {
           position: absolute;
@@ -100,6 +101,7 @@
           background: #000;
           border-radius: 0.75rem;
           transition: transform 0.3s ease;
+          z-index: 1;
 
           @media (min-width: 768px) {
             border-radius: 1rem;
@@ -117,6 +119,7 @@
           border-radius: 0.75rem;
           opacity: 0;
           transition: opacity 0.3s ease;
+          z-index: 2;
 
           @media (min-width: 768px) {
             border-radius: 1rem;
@@ -131,6 +134,7 @@
           position: relative;
           padding: 1.25rem;
           height: 100%;
+          z-index: 3;
 
           @media (min-width: 768px) {
             padding: 1.5rem;
