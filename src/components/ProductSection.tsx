@@ -92,7 +92,7 @@ const ProductSection: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Enquire Now
+                Enquiry Now
               </motion.button>
             </motion.div>
           ))}

@@ -7,6 +7,8 @@ import FAQ from './components/FAQ/FAQ'
 import Footer from './components/Footer/Footer'
 import FloatingButtons from './components/FloatingButtons/FloatingButtons'
 import LoadingScreen from './components/LoadingScreen/LoadingScreen'
+import BrandSlider from './components/BrandSlider/BrandSlider'
+
 import { useEffect } from 'react';
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
       <LoadingScreen />
       <Hero />
       <AboutUs id="about" />
+      <BrandSlider />
       <ProductSection />
       <ContactUs id="contact-us" />
       <FAQ />

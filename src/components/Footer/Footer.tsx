@@ -65,33 +65,6 @@ const Footer = () => {
               </motion.li>
             </ul>
           </motion.div>
-
-          {/* Newsletter */}
-          <motion.div 
-            className="footer__section footer__section--newsletter"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="footer__title">Stay Updated</h3>
-            <p className="footer__text">Subscribe to our newsletter for the latest updates and offers.</p>
-            <form className="footer__newsletter">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="footer__input"
-              />
-              <motion.button
-                type="submit"
-                className="footer__submit"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Subscribe
-              </motion.button>
-            </form>
-          </motion.div>
         </div>
 
         {/* Bottom Bar */}
