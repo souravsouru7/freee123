@@ -37,8 +37,8 @@ const FAQ = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
+        staggerChildren: 0.05,
+        delayChildren: 0.1
       }
     }
   };
@@ -47,14 +47,16 @@ const FAQ = () => {
     hidden: { 
       opacity: 0,
       y: 20,
-      rotateX: -15
+      scale: 0.98,
+      rotateX: -5
     },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       rotateX: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: [0.4, 0, 0.2, 1]
       }
     }
@@ -64,24 +66,40 @@ const FAQ = () => {
     hidden: { 
       height: 0,
       opacity: 0,
-      rotateX: -15
+      rotateX: -5,
+      scale: 0.98
     },
     visible: {
       height: 'auto',
       opacity: 1,
       rotateX: 0,
+      scale: 1,
       transition: {
-        duration: 0.4,
+        duration: 0.25,
         ease: [0.4, 0, 0.2, 1]
       }
     },
     exit: {
       height: 0,
       opacity: 0,
-      rotateX: -15,
+      rotateX: -5,
+      scale: 0.98,
       transition: {
-        duration: 0.3,
+        duration: 0.2,
         ease: [0.4, 0, 0.2, 1]
+      }
+    }
+  };
+
+  const plusVariants = {
+    initial: { rotate: 0, scale: 1 },
+    active: { 
+      rotate: 45,
+      scale: 1.1,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 20
       }
     }
   };
@@ -90,9 +108,13 @@ const FAQ = () => {
     <section className={styles.faqSection}>
       <div className={styles.container}>
         <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ 
+            duration: 0.8,
+            ease: [0.4, 0, 0.2, 1],
+            delay: 0.2
+          }}
           viewport={{ once: true }}
           className={styles.title}
         >
@@ -112,7 +134,11 @@ const FAQ = () => {
               className={styles.faqItem}
               whileHover={{ 
                 scale: 1.02,
-                transition: { duration: 0.2 }
+                transition: { 
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 10
+                }
               }}
             >
               <motion.button
@@ -123,11 +149,9 @@ const FAQ = () => {
               >
                 <span>{faq.question}</span>
                 <motion.span
-                  animate={{ 
-                    rotate: activeIndex === index ? 45 : 0,
-                    scale: activeIndex === index ? 1.1 : 1
-                  }}
-                  transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                  variants={plusVariants}
+                  initial="initial"
+                  animate={activeIndex === index ? "active" : "initial"}
                   className={styles.plusIcon}
                 >
                   +
