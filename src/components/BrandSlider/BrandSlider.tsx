@@ -88,6 +88,7 @@ const BrandSlider: React.FC = () => {
   return (
     <section className="brand-slider">
       <div className="brand-slider__container">
+        <h2 className="brand-slider__title">Our Brands</h2>
         <motion.div 
           className="brand-slider__track"
           animate={controls}

@@ -322,4 +322,11 @@
     bottom: 30%;
     right: 10%;
   }
+}
+
+@media (max-width: 767px) {
+  .about-us__content {
+    padding-bottom: 0.5rem !important;
+    gap: 1rem !important;
+  }
 } 
