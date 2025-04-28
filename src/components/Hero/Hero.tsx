@@ -294,7 +294,7 @@ const Hero = () => {
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 1.6, type: 'spring', stiffness: 100 }}
                 >
-                  Ras Al Khaimah, UAE
+                  Ras Al Khaimah,UAE
                 </motion.div>
 
                 <motion.div
