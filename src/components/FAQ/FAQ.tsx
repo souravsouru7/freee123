@@ -2,6 +2,39 @@ import { useState } from 'react';
 import styles from './FAQ.module.scss';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const QuestionIcon = ({ open }: { open: boolean }) => (
+  <motion.span
+    className={`${styles.icon} ${open ? 'open' : ''}`}
+    initial={{ rotate: 0 }}
+    animate={{ rotate: open ? 180 : 0, scale: open ? 1.1 : 1 }}
+    transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+  >
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="11" stroke="none" fill="currentColor" opacity="0.18" />
+      <path d="M12 7v6" stroke="#fff" strokeWidth="2.2" strokeLinecap="round"/>
+      <circle cx="12" cy="16.2" r="1.2" fill="#fff" />
+    </svg>
+  </motion.span>
+);
+
+const HeadlineIcon = () => (
+  <span className={styles.headlineIcon}>
+    <svg viewBox="0 0 64 64" fill="none">
+      <ellipse cx="32" cy="32" rx="30" ry="30" fill="#DC2626" opacity="0.18" />
+      <path d="M32 16c-5.5 0-10 4.5-10 10h6c0-2.2 1.8-4 4-4s4 1.8 4 4c0 4-6 3.8-6 10h6c0-3.2 6-3.5 6-10 0-5.5-4.5-10-10-10z" fill="#DC2626"/>
+      <circle cx="32" cy="48" r="3" fill="#DC2626" />
+    </svg>
+  </span>
+);
+
+const HeadlineBg = () => (
+  <span className={styles.headlineBg}>
+    <svg viewBox="0 0 220 110" fill="none">
+      <path d="M0,80 Q60,20 110,80 T220,80 Q180,110 110,100 Q40,90 0,80" fill="#ef4444" opacity="0.13"/>
+    </svg>
+  </span>
+);
+
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -28,152 +61,96 @@ const FAQ = () => {
     }
   ];
 
-  const toggleFAQ = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.08,
         delayChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { 
-      opacity: 0,
-      y: 20,
-      scale: 0.98,
-      rotateX: -5
-    },
+    hidden: { opacity: 0, y: 30, scale: 0.98, rotateX: -5 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       rotateX: 0,
-      transition: {
-        duration: 0.3,
-        ease: [0.4, 0, 0.2, 1]
-      }
+      transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] }
     }
   };
 
   const answerVariants = {
-    hidden: { 
-      height: 0,
-      opacity: 0,
-      rotateX: -5,
-      scale: 0.98
-    },
+    hidden: { height: 0, opacity: 0, y: 20 },
     visible: {
       height: 'auto',
       opacity: 1,
-      rotateX: 0,
-      scale: 1,
-      transition: {
-        duration: 0.25,
-        ease: [0.4, 0, 0.2, 1]
-      }
+      y: 0,
+      transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] }
     },
     exit: {
       height: 0,
       opacity: 0,
-      rotateX: -5,
-      scale: 0.98,
-      transition: {
-        duration: 0.2,
-        ease: [0.4, 0, 0.2, 1]
-      }
+      y: 20,
+      transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] }
     }
   };
 
-  const plusVariants = {
-    initial: { rotate: 0, scale: 1 },
-    active: { 
-      rotate: 45,
-      scale: 1.1,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 20
-      }
-    }
+  const toggleFAQ = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
     <section className={styles.faqSection}>
-      <div className={styles.container}>
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.8,
-            ease: [0.4, 0, 0.2, 1],
-            delay: 0.2
-          }}
-          viewport={{ once: true }}
-          className={styles.title}
-        >
-          Frequently Asked Questions
-        </motion.h2>
-        <motion.div 
-          className={styles.faqList}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className={styles.faqItem}
-              whileHover={{ 
-                scale: 1.02,
-                transition: { 
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 10
-                }
-              }}
-            >
-              <motion.button
-                className={`${styles.faqQuestion} ${activeIndex === index ? styles.active : ''}`}
-                onClick={() => toggleFAQ(index)}
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span>{faq.question}</span>
-                <motion.span
-                  variants={plusVariants}
-                  initial="initial"
-                  animate={activeIndex === index ? "active" : "initial"}
-                  className={styles.plusIcon}
-                >
-                  +
-                </motion.span>
-              </motion.button>
-              <AnimatePresence>
-                {activeIndex === index && (
-                  <motion.div
-                    variants={answerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className={styles.faqAnswer}
-                  >
-                    <p>{faq.answer}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
-        </motion.div>
+      <div className={styles.faqHeader}>
+        <HeadlineBg />
+        <HeadlineIcon />
+        <div className={styles.title}>Frequently Asked Questions</div>
+        <div className={styles.divider}></div>
+        <div className={styles.subtitle}>Find quick answers to common queries about our products and services.</div>
       </div>
+      <motion.div
+        className={styles.faqList}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        {faqs.map((faq, index) => (
+          <motion.div
+            key={index}
+            variants={itemVariants}
+            className={styles.faqItem}
+            whileHover={{ scale: 1.03, rotateX: 2 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <button
+              className={`${styles.faqQuestion} ${activeIndex === index ? styles.active : ''}`}
+              onClick={() => toggleFAQ(index)}
+              aria-expanded={activeIndex === index}
+            >
+              <QuestionIcon open={activeIndex === index} />
+              <span className="questionText">{faq.question}</span>
+            </button>
+            <AnimatePresence initial={false}>
+              {activeIndex === index && (
+                <motion.div
+                  variants={answerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className={styles.faqAnswer}
+                >
+                  <p>{faq.answer}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 };
