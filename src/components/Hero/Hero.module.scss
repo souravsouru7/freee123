@@ -301,7 +301,7 @@
   &__description {
     color: white;
     font-size: 1.125rem;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 1.25rem;
     letter-spacing: 1.5px;
     text-shadow: 0 2px 12px rgba(220, 38, 38, 0.63);
@@ -309,6 +309,8 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    position: relative;
+    z-index: 100;
 
     @media (max-width: 768px) {
       font-size: 1rem;
@@ -330,6 +332,8 @@
     font-weight: 600;
     transform-style: preserve-3d;
     backface-visibility: hidden;
+    position: relative;
+    z-index: 100;
 
     @media (max-width: 1024px) {
       font-size: 0.8rem;
@@ -354,6 +358,8 @@
     text-shadow: 0 2px 12px rgba(220, 38, 38, 0.63);
     transform-style: preserve-3d;
     backface-visibility: hidden;
+    position: relative;
+    z-index: 100;
 
     @media (max-width: 768px) {
       font-size: 1.8rem;
@@ -366,13 +372,15 @@
   }
 
   &__year {
-    color: #DC2626;
+    color: white;
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 1.25rem;
     letter-spacing: 1px;
     transform-style: preserve-3d;
     backface-visibility: hidden;
+    position: relative;
+    z-index: 100;
 
     @media (max-width: 768px) {
       font-size: 0.8rem;

@@ -47,7 +47,7 @@ const Footer = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <i className="fas fa-map-marker-alt"></i>
-                <span> Ras Al Khaimah,UAE</span>
+                <span>UAE</span>
               </motion.li>
               <motion.li
                 whileHover={{ x: 10 }}
