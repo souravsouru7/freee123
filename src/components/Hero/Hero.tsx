@@ -169,7 +169,7 @@ const Hero = () => {
                 ease: "linear"
               }}
             >
-              <circle cx="30" cy="30" r="26" stroke="#dc2626" strokeWidth="4" fill="none" opacity="0.10" />
+              <circle cx="30" cy="30" r="26" stroke="#36454f" strokeWidth="4" fill="none" opacity="0.10" />
             </motion.svg>
           </div>
 
@@ -187,7 +187,7 @@ const Hero = () => {
               ease: "linear"
             }}
           >
-            <circle cx="30" cy="30" r="28" stroke="#fff" strokeWidth="3" fill="none" />
+            <circle cx="30" cy="30" r="28" stroke="#36454f" strokeWidth="3" fill="none" />
           </motion.svg>
           
           <motion.svg 
