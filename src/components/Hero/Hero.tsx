@@ -376,7 +376,7 @@ const Hero = () => {
                     transition={{ duration: 2, repeat: Infinity, delay: 1 }}
                   ></motion.span>
                 </div>
-                <span className={styles.hero__scroll_text}>SCROLL TO EXPLORE</span>
+              
               </motion.div>
             </div>
           </motion.div>
