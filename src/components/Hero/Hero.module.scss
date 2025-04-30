@@ -197,10 +197,10 @@
     }
 
     @media (max-width: 480px) {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1rem auto;
-      opacity: 0.6;
+      width: 15px;
+      height: 15px;
+      margin: 0 auto 0.1rem auto;
+      opacity: 0.2;
     }
 
     &:hover {
@@ -740,8 +740,8 @@
     order: 2;
   }
   .hero__wheel {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     margin: 0 auto 1rem auto;
     opacity: 0.6;
   }

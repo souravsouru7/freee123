@@ -102,7 +102,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="footer__bottom">
           <div className="footer__copyright">
-            © {currentYear} Alnsr Aldahabi Tyres Trading. All rights reserved. Website design and development by{' '}
+            © {currentYear} Alnsr Aldahabi Tyres Trading. All rights reserved. Website design and developed by{' '}
             <motion.a 
               href="https://www.dimark.ae"
               target="_blank"

@@ -399,21 +399,20 @@
       }
 
       textarea {
-        height: 100px;
+        height: 45px;
         resize: none;
-        padding-top: 0.75rem;
+        padding: 0.75rem 0.75rem 0.75rem 2.5rem;
         background: rgba(0, 0, 0, 0.4);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
         color: #fff;
         font-size: 0.9rem;
-        padding: 0.5rem 0.5rem 0.5rem 2.5rem;
         transition: all 0.3s ease;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
         @media (min-width: 768px) {
-          height: 120px;
-          padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+          height: 52px;
+          padding: 1rem 1rem 1rem 3rem;
         }
 
         &::placeholder {
