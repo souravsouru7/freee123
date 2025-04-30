@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import './Footer.scss';
+import logo from '../../assets/logo2.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -40,30 +41,61 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="footer__title">Get in Touch</h3>
-            <ul className="footer__contact">
-              <motion.li
+            <h3 className="footer__title">Contact Us</h3>
+            <div className="footer__contact-info">
+              <motion.div 
+                className="footer__contact-item"
                 whileHover={{ x: 10 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <i className="fas fa-map-marker-alt"></i>
-                <span>UAE</span>
-              </motion.li>
-              <motion.li
+                <i className="fas fa-map-marker-alt footer__icon"></i>
+                <span className="footer__text">UAE</span>
+              </motion.div>
+              <motion.div 
+                className="footer__contact-item"
                 whileHover={{ x: 10 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <i className="fas fa-phone"></i>
-                <span>+971 52 331 7180</span>
-              </motion.li>
-              <motion.li
+                <i className="fas fa-phone footer__icon"></i>
+                <span className="footer__text">+971 52 331 7180</span>
+              </motion.div>
+              <motion.div 
+                className="footer__contact-item"
                 whileHover={{ x: 10 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <i className="fas fa-envelope"></i>
-                <span>alnsraldahabityrestrading@gmail.com</span>
-              </motion.li>
-            </ul>
+                <i className="fas fa-envelope footer__icon"></i>
+                <span className="footer__text">alnsraldahabityrestrading@gmail.com</span>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Company Logo */}
+          <motion.div 
+            className="footer__section footer__section--logo"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="footer__logo-container">
+              <motion.img 
+                src={logo} 
+                alt="Alnsr Aldahabi Tyres Trading Logo"
+                className="footer__logo"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              />
+              <motion.div 
+                className="footer__logo-text"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+              >
+                <h3 className="footer__company-name">Alnsr Aldahabi Tyres Trading</h3>
+                <p className="footer__company-tagline">Your Trusted Partner in Quality Tyres</p>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
 
