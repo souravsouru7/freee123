@@ -70,7 +70,7 @@ const ContactUs = ({ id }: ContactUsProps) => {
     {
       icon: <FaBuilding className="icon" />,
       title: "Business Hours",
-      content: "Mon - Fri: 9:00 AM - 6:00 PM",
+      content: "Mon - Fri: 9:00 AM - 7:00 PM",
       link: "#"
     }
   ];

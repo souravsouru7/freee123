@@ -11,7 +11,7 @@ const ProductSection: React.FC = () => {
     },
     {
       id: 2,
-      name: 'SCORPION',
+      name: 'FALCON',
       image: '/assets/pngegg (79).png',
     },
     {
