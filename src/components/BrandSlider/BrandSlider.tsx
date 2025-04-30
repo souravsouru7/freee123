@@ -26,6 +26,7 @@ import Toyo from '../../assets/tyrebrand/Toyo-Tires.png';
 import Triangle from '../../assets/tyrebrand/Triangle.png';
 import Wanli from '../../assets/tyrebrand/wanli.png';
 import Yokohama from '../../assets/tyrebrand/Yokohama.png';
+import Falcon from '../../assets/tyrebrand/Falcon tyre-01.png';
 
 const BrandSlider: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -79,7 +80,8 @@ const BrandSlider: React.FC = () => {
     { name: 'Toyo', image: Toyo },
     { name: 'Triangle', image: Triangle },
     { name: 'Wanli', image: Wanli },
-    { name: 'Yokohama', image: Yokohama }
+    { name: 'Yokohama', image: Yokohama },
+    { name: 'Falcon', image: Falcon }
   ];
 
   // Duplicate the brands array for smoother infinite scrolling

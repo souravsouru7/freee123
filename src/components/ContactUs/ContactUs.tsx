@@ -61,12 +61,7 @@ const ContactUs = ({ id }: ContactUsProps) => {
       content: "alnsraldahabityrestrading@gmail.com",
       link: "mailto:alnsraldahabityrestrading@gmail.com"
     },
-    {
-      icon: <FaMapMarkerAlt className="icon" />,
-      title: "Location",
-      content: "UAE",
-      link: "https://maps.google.com"
-    },
+   
     {
       icon: <FaBuilding className="icon" />,
       title: "Business Hours",
