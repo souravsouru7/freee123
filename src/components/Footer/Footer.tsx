@@ -54,7 +54,7 @@ const Footer = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <i className="fas fa-phone"></i>
-                <span>+1 (555) 123-4567</span>
+                <span>+971 52 331 7180</span>
               </motion.li>
               <motion.li
                 whileHover={{ x: 10 }}

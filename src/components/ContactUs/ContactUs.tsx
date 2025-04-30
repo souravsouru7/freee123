@@ -52,7 +52,7 @@ const ContactUs = ({ id }: ContactUsProps) => {
     {
       icon: <FaPhone className="icon" />,
       title: "Phone",
-      content: "+971523317180",
+      content: "+971 52 331 7180",
       link: "tel:+971523317180"
     },
     {
