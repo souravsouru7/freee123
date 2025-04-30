@@ -122,15 +122,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
-    gap: 3rem;
+    padding: 4rem 1rem;
+    gap: 4rem;
 
     @media (min-width: 768px) {
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      padding: 0 6vw;
-      gap: 6vw;
+      padding: 6rem 6vw;
+      gap: 8vw;
     }
 
     .contact-info {
@@ -294,7 +294,8 @@
       background: rgba(24, 24, 27, 0.8);
       backdrop-filter: blur(20px);
       border-radius: 1.5rem;
-      padding: 2.5rem;
+      padding: 2rem;
+      margin-top: 2rem;
       border: 1px solid rgba(220, 38, 38, 0.2);
       box-shadow: 
         0 10px 30px rgba(0, 0, 0, 0.2),
@@ -312,8 +313,9 @@
       }
 
       @media (min-width: 768px) {
+        margin-top: 0;
+        padding: 2.5rem;
         min-width: 340px;
-        padding: 3rem;
       }
 
       form {

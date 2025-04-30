@@ -13,7 +13,7 @@ const FloatingButtons: React.FC = () => {
   return (
     <div className="floating-buttons">
       <a
-        href="https://wa.me/your-phone-number"
+        href="https://wa.me/+971523317180"
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-button"
@@ -27,7 +27,7 @@ const FloatingButtons: React.FC = () => {
         <FaEnvelope color="#fff" size={24} />
       </a>
       <a
-        href="tel:+1234567890"
+        href="tel:+971523317180"
         className="call-button"
       >
         <FaPhone color="#fff" size={24} />

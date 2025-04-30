@@ -52,8 +52,8 @@ const ContactUs = ({ id }: ContactUsProps) => {
     {
       icon: <FaPhone className="icon" />,
       title: "Phone",
-      content: "+971 50 123 4567",
-      link: "tel:+971501234567"
+      content: "+971523317180",
+      link: "tel:+971523317180"
     },
     {
       icon: <FaEnvelope className="icon" />,
