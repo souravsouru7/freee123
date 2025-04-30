@@ -48,14 +48,6 @@ const Footer = () => {
                 whileHover={{ x: 10 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <i className="fas fa-map-marker-alt footer__icon"></i>
-                <span className="footer__text">UAE</span>
-              </motion.div>
-              <motion.div 
-                className="footer__contact-item"
-                whileHover={{ x: 10 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
                 <i className="fas fa-phone footer__icon"></i>
                 <span className="footer__text">+971 52 331 7180</span>
               </motion.div>
@@ -66,6 +58,14 @@ const Footer = () => {
               >
                 <i className="fas fa-envelope footer__icon"></i>
                 <span className="footer__text">alnsraldahabityrestrading@gmail.com</span>
+              </motion.div>
+              <motion.div 
+                className="footer__contact-item"
+                whileHover={{ x: 10 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                <i className="fas fa-map-marker-alt footer__icon"></i>
+                <span className="footer__text">Ras Al Khaimah, UAE</span>
               </motion.div>
             </div>
           </motion.div>
