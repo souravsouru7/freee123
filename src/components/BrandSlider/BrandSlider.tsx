@@ -64,6 +64,7 @@ const BrandSlider: React.FC = () => {
     { name: 'Continental', image: Continental },
     { name: 'Dunlop', image: Dunlop },
     { name: 'Falken', image: Falken },
+    { name: 'Falcon', image: Falcon },
     { name: 'Federal', image: Federal },
     { name: 'Firestone', image: Firestone },
     { name: 'General', image: General },
@@ -81,7 +82,7 @@ const BrandSlider: React.FC = () => {
     { name: 'Triangle', image: Triangle },
     { name: 'Wanli', image: Wanli },
     { name: 'Yokohama', image: Yokohama },
-    { name: 'Falcon', image: Falcon }
+
   ];
 
   // Duplicate the brands array for smoother infinite scrolling
