@@ -667,40 +667,33 @@
   .hero__container {
     position: relative;
     &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.30);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
-      z-index: 1;
-      pointer-events: none;
+      display: none;
     }
   }
 
   .hero__3d-shapes {
-    opacity: 0.25 !important;
-    filter: blur(8px) !important;
+    opacity: 1 !important;
+    filter: none !important;
     transform: scale(0.8) !important;
   }
 
   .hero__decor {
-    opacity: 0.1 !important;
-    filter: blur(8px) !important;
+    opacity: 1 !important;
+    filter: none !important;
   }
 
   .hero__gradient {
-    opacity: 0.3 !important;
-    filter: blur(12px) !important;
+    opacity: 1 !important;
+    filter: none !important;
   }
 
   .hero__background_wheel {
-    opacity: 0.15 !important;
-    filter: blur(4px) grayscale(0.6) !important;
+    opacity: 1 !important;
+    filter: none !important;
   }
 
   .hero__background_overlay {
-    background: linear-gradient(90deg, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.5) 100%) !important;
+    background: none !important;
   }
 
   .hero__logo_mobile,
@@ -710,14 +703,14 @@
   }
 
   .hero__wheel {
-    opacity: 0.15 !important;
-    filter: blur(5px) !important;
+    opacity: 1 !important;
+    filter: none !important;
   }
 
   .hero__text_content {
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border-radius: 8px;
     padding: 1rem;
     margin: 0 0.5rem;
