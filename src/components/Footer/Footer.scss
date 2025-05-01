@@ -447,15 +447,15 @@
     border-radius: 1rem;
     overflow: hidden;
     margin-top: 0.5rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
       border-color: rgba(255, 107, 107, 0.3);
     }
   }
@@ -466,7 +466,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.3) 0%, rgba(26, 26, 26, 0.5) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
     z-index: 1;
     pointer-events: none;
   }
@@ -475,11 +475,11 @@
     width: 100%;
     height: 100%;
     border-radius: 1rem;
-    filter: grayscale(30%) contrast(120%) brightness(0.9);
+    filter: brightness(1.1) contrast(1.1);
     transition: all 0.5s ease;
 
     &:hover {
-      filter: grayscale(0%) contrast(100%) brightness(1);
+      filter: brightness(1.2) contrast(1.2);
     }
   }
 
@@ -491,13 +491,13 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.25rem;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+    background: linear-gradient(135deg, #DC2626 0%, #ef4444 100%);
     color: white;
     border-radius: 0.75rem;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.85rem;
-    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
     z-index: 2;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -509,8 +509,8 @@
     }
 
     &:hover {
-      background: linear-gradient(135deg, #ff8e8e 0%, #ff6b6b 100%);
-      box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+      background: linear-gradient(135deg, #ef4444 0%, #DC2626 100%);
+      box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
       transform: translateY(-2px);
 
       i {
