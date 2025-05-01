@@ -425,8 +425,8 @@
       color: white;
 
       &:hover {
-        transform: scale(1.1) translateZ(10px);
-        box-shadow: 0 0 30px #DC2626, 0 0 60px #DC2626;
+        transform: none !important;
+        box-shadow: none !important;
       }
     }
 
@@ -436,8 +436,8 @@
       border: 2px solid white;
 
       &:hover {
-        transform: scale(1.1) translateZ(10px);
-        box-shadow: 0 0 30px #fff, 0 0 60px #fff;
+        transform: none !important;
+        box-shadow: none !important;
       }
     }
 
@@ -445,6 +445,11 @@
       width: 100%;
       font-size: 1rem;
       padding: 0.9rem 0;
+
+      &:hover {
+        transform: none !important;
+        box-shadow: none !important;
+      }
     }
   }
 
@@ -665,26 +670,57 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.30);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
       z-index: 1;
       pointer-events: none;
     }
   }
 
+  .hero__3d-shapes {
+    opacity: 0.25 !important;
+    filter: blur(8px) !important;
+    transform: scale(0.8) !important;
+  }
+
+  .hero__decor {
+    opacity: 0.1 !important;
+    filter: blur(8px) !important;
+  }
+
+  .hero__gradient {
+    opacity: 0.3 !important;
+    filter: blur(12px) !important;
+  }
+
+  .hero__background_wheel {
+    opacity: 0.15 !important;
+    filter: blur(4px) grayscale(0.6) !important;
+  }
+
+  .hero__background_overlay {
+    background: linear-gradient(90deg, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.5) 100%) !important;
+  }
+
   .hero__logo_mobile,
   .hero__text_content {
     position: relative;
-    z-index: 2;
+    z-index: 10;
   }
 
-  .hero__background_image {
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
+  .hero__wheel {
+    opacity: 0.15 !important;
+    filter: blur(5px) !important;
+  }
+
+  .hero__text_content {
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0 0.5rem;
   }
 
   .hero__logo_mobile {
@@ -956,5 +992,14 @@
     padding: 1.25rem;
     height: 100%;
     z-index: 3;
+  }
+}
+
+.hero__buttons {
+  .hero__button {
+    &:hover, &:active, &:focus {
+      box-shadow: none !important;
+      transform: none !important;
+    }
   }
 } 

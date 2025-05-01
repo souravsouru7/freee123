@@ -33,40 +33,51 @@ const Footer = () => {
       {/* Main Content */}
       <div className="footer__content">
         <div className="footer__grid">
-          {/* Contact Info */}
+          {/* Map Section */}
           <motion.div 
-            className="footer__section footer__section--contact"
+            className="footer__section footer__section--map"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="footer__title">Contact Us</h3>
-            <div className="footer__contact-info">
+            <div className="footer__map-header">
+              <h3 className="footer__title">Our Location</h3>
               <motion.div 
-                className="footer__contact-item"
-                whileHover={{ x: 10 }}
+                className="footer__location-card"
+                whileHover={{ scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <i className="fas fa-phone footer__icon"></i>
-                <span className="footer__text">+971 52 331 7180</span>
+                <i className="fas fa-map-marker-alt footer__location-icon"></i>
+                <div className="footer__location-info">
+                  <span className="footer__location-title">Visit Us</span>
+                  <span className="footer__location-address">Ras Al Khaimah, UAE</span>
+                </div>
               </motion.div>
-              <motion.div 
-                className="footer__contact-item"
-                whileHover={{ x: 10 }}
-                transition={{ type: 'spring', stiffness: 300 }}
+            </div>
+            <div className="footer__map-container">
+              <div className="footer__map-overlay"></div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.1023749999997!2d55.9438!3d25.2048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDEyJzE3LjMiTiA1NcKwNTYnMzcuNyJF!5e0!3m2!1sen!2sae!4v1645543212345!5m2!1sen!2sae"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="footer__map"
+              ></iframe>
+              <motion.a 
+                href="https://maps.app.goo.gl/4BT1udb3PoYWoADY7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer__map-button"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <i className="fas fa-envelope footer__icon"></i>
-                <span className="footer__text">alnsraldahabityrestrading@gmail.com</span>
-              </motion.div>
-              <motion.div 
-                className="footer__contact-item"
-                whileHover={{ x: 10 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <i className="fas fa-map-marker-alt footer__icon"></i>
-                <span className="footer__text">Ras Al Khaimah, UAE</span>
-              </motion.div>
+                <i className="fas fa-directions"></i>
+                Get Directions
+              </motion.a>
             </div>
           </motion.div>
 
