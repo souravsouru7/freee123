@@ -68,7 +68,7 @@ const Footer = () => {
                 className="footer__map"
               ></iframe>
               <motion.a 
-                href="https://maps.app.goo.gl/4BT1udb3PoYWoADY7"
+                href="https://maps.app.goo.gl/m5E8AqrNQTBSVqMu5"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer__map-button"
