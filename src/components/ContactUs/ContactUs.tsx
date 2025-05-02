@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FaPhone, FaEnvelope, FaPaperPlane, FaUser, FaComment, FaBuilding } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaPaperPlane, FaUser, FaComment, FaBuilding, FaMapMarkerAlt } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 import './ContactUs.scss';
 
 interface ContactUsProps {
@@ -12,6 +13,9 @@ const ContactUs = ({ id }: ContactUsProps) => {
     email: '',
     message: ''
   });
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const contactInfo = [
     {
@@ -27,11 +31,18 @@ const ContactUs = ({ id }: ContactUsProps) => {
       link: "mailto:alnsraldahabityrestrading@gmail.com"
     },
     {
+      icon: <FaMapMarkerAlt className="icon" />,
+      title: "Location",
+      content: "Al Taleb Building, Ras Al Khaimah, UAE",
+      link: "#"
+    },
+    {
       icon: <FaBuilding className="icon" />,
       title: "Business Hours",
       content: "Mon - Sat: 9:00 AM - 7:00 PM",
       link: "#"
     }
+   
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -42,9 +53,39 @@ const ContactUs = ({ id }: ContactUsProps) => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
+    setIsLoading(true);
+    setShowError(false);
+    setShowSuccess(false);
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'soutavr5@gmail.com'
+      };
+
+      await emailjs.send(
+        'service_c4web4j',
+        'template_6a3fv0t',
+        templateParams,
+        'wS4oA3THwsxPutQPs' // Replace with your EmailJS public key
+      );
+
+      setShowSuccess(true);
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setShowError(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -82,6 +123,18 @@ const ContactUs = ({ id }: ContactUsProps) => {
             <form onSubmit={handleSubmit}>
               <h2>Send us a Message</h2>
               
+              {showSuccess && (
+                <div className="success-message">
+                  <p>Message sent successfully! We'll get back to you soon.</p>
+                </div>
+              )}
+
+              {showError && (
+                <div className="error-message">
+                  <p>Failed to send message. Please try again later.</p>
+                </div>
+              )}
+              
               <div className="input-group">
                 <FaUser className="input-icon" />
                 <input
@@ -117,9 +170,9 @@ const ContactUs = ({ id }: ContactUsProps) => {
                 />
               </div>
 
-              <button type="submit">
+              <button type="submit" disabled={isLoading}>
                 <FaPaperPlane />
-                Send Message
+                {isLoading ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
